@@ -7,6 +7,8 @@ gradient = SubResource("Gradient_0bdnd")
 
 [node name="MiniJuego2D" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(365.5, 220)
 scale = Vector2(2.82813, 2.625)
