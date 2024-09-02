@@ -1,4 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=7 format=3 uid="uid://4w182mkeoav1"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
+[ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
+[ext_resource type="Script" path="res://Scenes/PlayerGroundState.gd" id="3_2v8ml"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
 
@@ -9,6 +13,16 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972414, 0)
+script = ExtResource("1_3ccag")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_i4s6t")
+initial_state = NodePath("PlayerGroundState")
+
+[node name="PlayerGroundState" type="Node" parent="StateMachine"]
+script = ExtResource("3_2v8ml")
+
+[node name="PlayerCarriyingState" type="Node" parent="StateMachine"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0anvw")
