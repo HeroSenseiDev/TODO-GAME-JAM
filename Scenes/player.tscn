@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://4w182mkeoav1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5ky3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qqle"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972414, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0anvw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0327148, 0.321716, -0.383936)
+material_override = SubResource("StandardMaterial3D_l5ky3")
+size = Vector3(0.577148, 0.356567, 0.671387)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3qqle")
