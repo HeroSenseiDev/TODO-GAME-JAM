@@ -1,5 +1,18 @@
-[gd_scene format=3 uid="uid://dh0qod2bv7tt"]
+[gd_scene load_steps=3 format=3 uid="uid://dh0qod2bv7tt"]
+
+[ext_resource type="PackedScene" uid="uid://d0bqfj37nmdny" path="res://Scenes2D/mini_juego_2d.tscn" id="1_x61jr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0obdr"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node3D"]
 
 [node name="Ship" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_0obdr")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(640, 512)
+
+[node name="MiniJuego2D" parent="SubViewport" instance=ExtResource("1_x61jr")]
