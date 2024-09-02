@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=9 format=3 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -6,79 +6,19 @@
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/PlayerShockState.gd" id="4_hbqgt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qqle"]
-
-[sub_resource type="Animation" id="Animation_2f8cc"]
-resource_name = "Shock"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fff4b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_e5lpu"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.8, 0.9, 1), Vector3(1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wsjd"]
-_data = {
-"Idle": SubResource("Animation_e5lpu"),
-"RESET": SubResource("Animation_fff4b"),
-"Shock": SubResource("Animation_2f8cc")
-}
+height = 1.73349
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5ky3"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_68nmv"]
+radius = 0.821489
+height = 2.17213
+
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972414, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_3ccag")
 
 [node name="StateMachine" type="Node" parent="."]
@@ -93,28 +33,38 @@ script = ExtResource("4_hbqgt")
 
 [node name="Timer" type="Timer" parent="StateMachine/PlayerShockState"]
 
+[node name="KnockbackDuration" type="Timer" parent="StateMachine/PlayerShockState"]
+wait_time = 0.2
+one_shot = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.223126, 0)
 shape = SubResource("CapsuleShape3D_3qqle")
 
-[node name="ForwardRayCast" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, 1)
+[node name="PlayerGFX" type="Node3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5wsjd")
-}
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.889706, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerGFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889706, 0)
 mesh = SubResource("CapsuleMesh_0anvw")
 skeleton = NodePath("../..")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/MeshInstance3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerGFX/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0327148, 0.321716, 0.365545)
 material_override = SubResource("StandardMaterial3D_l5ky3")
 size = Vector3(0.577148, 0.356567, 0.671387)
 
+[node name="TripDetection" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TripDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16697, 0)
+shape = SubResource("CapsuleShape3D_68nmv")
+
+[node name="CarryingOffset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34753, 0)
+
 [connection signal="timeout" from="StateMachine/PlayerShockState/Timer" to="StateMachine/PlayerShockState" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/PlayerShockState/KnockbackDuration" to="StateMachine/PlayerShockState" method="_on_knockback_duration_timeout"]
+[connection signal="body_entered" from="TripDetection" to="StateMachine/PlayerGroundState" method="_on_trip_detection_body_entered"]
+[connection signal="body_exited" from="TripDetection" to="StateMachine/PlayerGroundState" method="_on_trip_detection_body_exited"]

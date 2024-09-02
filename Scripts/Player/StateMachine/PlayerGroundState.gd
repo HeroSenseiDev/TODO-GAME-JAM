@@ -6,20 +6,17 @@ var friction := 100.0
 #var max_speed := 10.0
 var velocity := Vector3.ZERO
 
+
 func enter():
-	player.anim.play("Idle")
+	pass
 
 
 
 func process(delta):
-	if player.fray_cast.is_colliding():
-		print("colisione")
-		var collider = player.fray_cast.get_collider()
-		if collider is Node3D:
-			if collider.is_in_group("Obstacles"):
-				player.anim.play("Shock")
-				state_machine.change_to("PlayerShockState")
-	# Obtener la dirección de entrada del jugador
+	#player.anim.play("Idle")
+	#if player.is_on_wall():
+		#state_machine.change_to("PlayerShockState")
+	#Obtener la dirección de entrada del jugador
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
 	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 
@@ -39,3 +36,9 @@ func process(delta):
 	# Mover al personaje
 	player.velocity.x = velocity.x
 	player.velocity.z = velocity.z
+
+
+func _on_trip_detection_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Obstacles"):
+		player.knockback_direction = -player.velocity.normalized() * 15
+		state_machine.change_to("PlayerShockState")
