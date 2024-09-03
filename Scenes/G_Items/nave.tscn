@@ -2123,7 +2123,7 @@ mesh = SubResource("ArrayMesh_p5o4e")
 skeleton = NodePath("")
 
 [node name="Plane_034" type="MeshInstance3D" parent="Base/Nave/Mesh"]
-transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -6.84783, 0, 0.643527)
+transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -6.21517, 0, 0.542402)
 material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_5okts")
 skeleton = NodePath("")

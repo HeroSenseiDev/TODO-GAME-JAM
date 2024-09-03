@@ -11064,7 +11064,7 @@ filters = ["Skeleton3D:Def_Anular_L.001", "Skeleton3D:Def_Anular_L.002", "Skelet
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_obhjo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sfuky"]
-graph_offset = Vector2(355.19, 166.587)
+graph_offset = Vector2(-626.2, 20.2321)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_488ge")
 nodes/Animation/position = Vector2(-220, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_eo23h")
