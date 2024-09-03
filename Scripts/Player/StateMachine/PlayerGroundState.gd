@@ -14,7 +14,10 @@ func enter():
 
 
 func process(delta):
-
+	#player.anim.play("Idle")
+	#if player.is_on_wall():
+		#state_machine.change_to("PlayerShockState")
+	#Obtener la dirección de entrada del jugador
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
 	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 
@@ -34,7 +37,7 @@ func process(delta):
 	# Mover al personaje
 	player.velocity.x = velocity.x
 	player.velocity.z = velocity.z
-	player.player_gfx.Set_Animation(player.velocity, false, false, false, 0.1)
+
 
 func _on_trip_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Obstacles"):

@@ -4,11 +4,13 @@ extends PlayerState
 
 
 func enter():
-	player.player_gfx.Set_Animation_Choque(1.0)
 	knockback_duration.start()
 	timer.start()
 	knockback()
 	
+func process(_delta):
+	print(player.velocity.z)
+
 func knockback():
 	player.velocity = player.knockback_direction
 	player.move_and_slide()
