@@ -1,5 +1,6 @@
 extends PlayerState
 
+
 # Variables para controlar el movimiento
 var acceleration := 100.0
 var friction := 100.0

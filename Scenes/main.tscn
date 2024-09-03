@@ -55,7 +55,7 @@ light_indirect_energy = 16.0
 light_angular_distance = 29.19
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.56344, 0.826157, 0, -0.826157, 0.56344, 0, 20.8175, 21.2262)
+transform = Transform3D(1, 0, 0, 0, 0.56344, 0.826157, 0, -0.826157, 0.56344, 0, 10, 11)
 
 [node name="Obstacle" type="MeshInstance3D" parent="." groups=["Obstacles"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.8652, 2.80365, 16.6234)
