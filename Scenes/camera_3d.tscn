@@ -1,9 +1,171 @@
-[gd_scene load_steps=2 format=3 uid="uid://ls5yu4n46jyt"]
+[gd_scene load_steps=12 format=3 uid="uid://ls5yu4n46jyt"]
 
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_itato"]
+
+[sub_resource type="Animation" id="Animation_a11xm"]
+resource_name = "run"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 4.5, 2.0128, 10, -4.03333, -2.15628, 0.25, 0),
+"times": PackedFloat32Array(0, 10)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10)
+}
+
+[sub_resource type="Animation" id="Animation_dc2mr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_seb4e"]
+resource_name = "Golpe"
+length = 0.708338
+step = 0.0416667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.104198, 0.370123, 9.26807, -0.125, -0.020793, 0.0833333, 0.0311909, 11.0251, -0.0833333, -0.82134, 0.104198, 0.831736, 10.3181, -0.0624691, 0.551024, 0.0625309, -0.634199, 10, -0.104136, 0.0686188, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.291667, 0.5, 0.708333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odhsw"]
+_data = {
+"Golpe": SubResource("Animation_seb4e"),
+"RESET": SubResource("Animation_dc2mr"),
+"run": SubResource("Animation_a11xm")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1hqj2"]
+animation = &"Golpe"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_60ugt"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_e6oge"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_q4rcv"]
+mix_mode = 1
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_h4dvx"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cuwp8"]
+graph_offset = Vector2(-689.553, 303.713)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_60ugt")
+nodes/Animation/position = Vector2(-380, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1hqj2")
+"nodes/Animation 2/position" = Vector2(-340, 300)
+nodes/Fuerza/node = SubResource("AnimationNodeTimeScale_e6oge")
+nodes/Fuerza/position = Vector2(-140, 300)
+nodes/Golpe/node = SubResource("AnimationNodeOneShot_q4rcv")
+nodes/Golpe/position = Vector2(80, 140)
+nodes/Speed/node = SubResource("AnimationNodeTimeScale_h4dvx")
+nodes/Speed/position = Vector2(-140, 140)
+node_connections = [&"Fuerza", 0, &"Animation 2", &"Golpe", 0, &"Speed", &"Golpe", 1, &"Fuerza", &"Speed", 0, &"Animation", &"output", 0, &"Golpe"]
 
 [node name="Camara" type="Node3D"]
 script = ExtResource("1_itato")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 10, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_odhsw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_cuwp8")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Fuerza/scale = 2.0
+parameters/Golpe/active = false
+parameters/Golpe/internal_active = false
+parameters/Golpe/request = 0
+parameters/Speed/scale = 1.0

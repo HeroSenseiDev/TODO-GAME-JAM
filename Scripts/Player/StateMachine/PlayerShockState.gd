@@ -8,6 +8,9 @@ func enter():
 	timer.start()
 	knockback()
 	
+func process(_delta):
+	print(player.velocity.z)
+
 func knockback():
 	player.velocity = player.knockback_direction
 	player.move_and_slide()
