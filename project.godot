@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="GAMEJAM"
-run/main_scene="res://Assets/Modelos/Player/Player.glb"
+run/main_scene="res://Assets/Modelos/Puertas/Puerta_Grande.glb"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

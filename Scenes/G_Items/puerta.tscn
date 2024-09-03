@@ -4,7 +4,6 @@
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_ew0f7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h8bi1"]
-load_path = "res://.godot/imported/Puertas_Base_textura.png-7a362d74a9e13386b0ddae5aacb69708.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jg3ui"]
 resource_name = "Material.003"
@@ -49,7 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_8at6n")
 size = Vector3(0.426, 2.151, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kpykq"]
-size = Vector3(2.165, 2.195, 3.035)
+size = Vector3(2.165, 2.195, 2.66354)
 
 [node name="Puerta" type="Node3D"]
 script = ExtResource("1_71o3b")
