@@ -4,7 +4,6 @@ extends PlayerState
 
 
 func enter():
-	player.player_gfx.Set_Animation_Choque(1.0)
 	knockback_duration.start()
 	timer.start()
 	knockback()

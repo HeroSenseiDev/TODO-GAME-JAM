@@ -34,9 +34,10 @@ func process(delta):
 	# Mover al personaje
 	player.velocity.x = velocity.x
 	player.velocity.z = velocity.z
-	player.player_gfx.Set_Animation(player.velocity, false, false, false, 0.1)
+	player.player_gfx.Set_Animation(player.velocity, true, false, false, 0.1)
 
 func _on_trip_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Obstacles"):
+		player.player_gfx.Set_Animation_Choque(1.0)
 		player.knockback_direction = -player.velocity.normalized() * 15
 		state_machine.change_to("PlayerShockState")
