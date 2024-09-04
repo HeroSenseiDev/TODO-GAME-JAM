@@ -15,6 +15,9 @@ var is_carrying : bool
 @export var offset : Vector2
 var can_set : bool
 @export var state_machine : StateMachine
+
+func _ready() -> void:
+	GameManager.player = self
 func _physics_process(delta: float) -> void:
 	
 	if is_carrying: 
