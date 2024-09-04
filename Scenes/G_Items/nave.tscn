@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=4 uid="uid://c7spk8gku5cov"]
+[gd_scene load_steps=168 format=4 uid="uid://c7spk8gku5cov"]
 
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_5euto"]
 [ext_resource type="PackedScene" uid="uid://4w182mkeoav1" path="res://Scenes/player.tscn" id="2_ujtjy"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Items/estrellas.gd" id="3_r1j11"]
 [ext_resource type="PackedScene" uid="uid://bo6opq4fmp2ca" path="res://Scenes/G_Items/puerta.tscn" id="4_ggp24"]
 [ext_resource type="PackedScene" uid="uid://cgwtpw837ti78" path="res://Scenes/G_Items/puerta_grande.tscn" id="5_2ocgr"]
+[ext_resource type="Script" path="res://Scripts/Destiny.gd" id="7_pkax7"]
+[ext_resource type="Texture2D" uid="uid://q4mfyvddm6x7" path="res://Resources/2D/Energy Alert.png" id="9_1mbwq"]
 [ext_resource type="Script" path="res://Scripts/Carrying.gd" id="9_4blbq"]
 [ext_resource type="PackedScene" uid="uid://o7kscbaysa3x" path="res://Scenes/enter_mini_juego.tscn" id="9_bhe2o"]
 [ext_resource type="PackedScene" uid="uid://c0rflr1tx0iwi" path="res://Scenes/GUI/GUI.tscn" id="10_vmwab"]
@@ -1493,6 +1495,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3krdw")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxf8h"]
+size = Vector3(5.59488, 3.98588, 5.28173)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm6vs"]
+size = Vector3(2.33406, 2.74799, 1.16915)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_ngkan"]
 _surfaces = [{
 "aabb": AABB(-0.171248, 0.0134894, -0.171248, 0.342496, 0.189822, 0.342496),
@@ -2056,9 +2064,6 @@ size = Vector3(3.77188, 2.74799, 2.78027)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dnrd4"]
 size = Vector3(3.77188, 2.74799, 3.09636)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vm6vs"]
-size = Vector3(2.33406, 2.74799, 1.16915)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j86dr"]
 radius = 0.853781
 height = 3.3701
@@ -2433,11 +2438,38 @@ material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_gik2d")
 skeleton = NodePath("")
 
-[node name="Cube_057" type="MeshInstance3D" parent="Base/Nave/Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84381, 0, -8.84137)
+[node name="DestinoBateria" type="StaticBody3D" parent="Base/Nave/Mesh" node_paths=PackedStringArray("objeto", "alert")]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.84381, 0, -8.84137)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("7_pkax7")
+objeto = NodePath("../../../../Bateria")
+alert = NodePath("Sprite3D")
+
+[node name="Mesh" type="MeshInstance3D" parent="Base/Nave/Mesh/DestinoBateria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
 material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_3kvx2")
 skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="Base/Nave/Mesh/DestinoBateria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Nave/Mesh/DestinoBateria/Area3D"]
+transform = Transform3D(0.943089, 0, -0.33254, 0, 1, 0, 0.33254, 0, 0.943089, -3.3797, 1.7694, 0.576219)
+shape = SubResource("BoxShape3D_vxf8h")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Base/Nave/Mesh/DestinoBateria"]
+transform = Transform3D(0.426075, 0, 0.904683, 0, 0.999999, 0, -0.904683, 0, 0.426075, -0.526638, 0.764795, -0.275214)
+shape = SubResource("BoxShape3D_vm6vs")
+
+[node name="Sprite3D" type="Sprite3D" parent="Base/Nave/Mesh/DestinoBateria"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2.89429, 0)
+visible = false
+billboard = 1
+texture = ExtResource("9_1mbwq")
 
 [node name="Cube_058" type="MeshInstance3D" parent="Base/Nave/Mesh"]
 transform = Transform3D(0.648795, -0.0297231, 0.00090111, 0.021711, 0.460023, -0.457959, 0.0203201, 0.457509, 0.460534, -0.657493, 0.48408, -9.71784)
@@ -2577,10 +2609,6 @@ shape = SubResource("BoxShape3D_vgi0v")
 transform = Transform3D(0.730339, 0, 0.683082, 0, 0.999999, 0, -0.683082, 0, 0.730339, -3.16145, 0.873992, -10.701)
 shape = SubResource("BoxShape3D_dnrd4")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Base/Nave/Collisions"]
-transform = Transform3D(0.426075, 0, 0.904683, 0, 0.999999, 0, -0.904683, 0, 0.426075, 3.04082, 0.873992, -8.8232)
-shape = SubResource("BoxShape3D_vm6vs")
-
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Base/Nave/Collisions"]
 transform = Transform3D(0.850536, 0, 0.525914, 0, 0.999999, 0, -0.525914, 0, 0.850536, 7.9878, 0.873992, -6.52334)
 shape = SubResource("CapsuleShape3D_j86dr")
@@ -2629,7 +2657,7 @@ shape = SubResource("CapsuleShape3D_7wugk")
 transform = Transform3D(0.699262, 0.177256, -0.692537, -0.70368, -6.02299e-08, -0.710514, -0.125943, 0.984163, 0.124732, -5.14459, 0.221987, 0.726653)
 shape = SubResource("CapsuleShape3D_7wugk")
 
-[node name="CollisionShape3D25" type="CollisionShape3D" parent="Base/Nave/Collisions"]
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="Base/Nave/Collisions" groups=["Obstacles"]]
 transform = Transform3D(1.91068e-15, 4.37113e-08, 0.999997, 0.999997, -4.37113e-08, 0, 4.37113e-08, 0.999998, -4.37113e-08, -3.66418, 0.221987, 7.12558)
 shape = SubResource("CapsuleShape3D_jafrf")
 
@@ -2756,12 +2784,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.10094, -0.000
 transform = Transform3D(0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, 0.919135, -6.498, 0, -7.991)
 
 [node name="Skeleton3D" parent="Base/Extra/Puerta_Grande/Puerta_Basudero/Armature" index="0"]
-bones/3/scale = Vector3(1, 0.99123, 1)
-bones/4/scale = Vector3(1, 1.00943, 1)
-bones/5/position = Vector3(-1.35863e-09, 0.212501, -2.54149e-08)
-bones/9/scale = Vector3(1, 0.99123, 1)
-bones/10/scale = Vector3(1, 1.00943, 1)
-bones/11/position = Vector3(1.35863e-09, 0.212501, -2.54149e-08)
+bones/3/scale = Vector3(1, 0.969664, 1)
+bones/4/scale = Vector3(1, 1.03282, 1)
+bones/5/position = Vector3(-7.15898e-10, 0.207877, -2.54149e-08)
+bones/9/scale = Vector3(1, 0.969664, 1)
+bones/10/scale = Vector3(1, 1.03282, 1)
+bones/11/position = Vector3(7.15898e-10, 0.207877, -2.54149e-08)
 
 [node name="Area3D" parent="Base/Extra/Puerta_Grande" index="3"]
 collision_layer = 2
@@ -2797,29 +2825,35 @@ draw_pass_1 = SubResource("PlaneMesh_50ima")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.96752e-07, 0, 11.3644)
 Mini_Juego = ExtResource("10_w2tqy")
 
-[node name="ObjetoCarreable" type="StaticBody3D" parent="."]
+[node name="Bateria" type="StaticBody3D" parent="." node_paths=PackedStringArray("destino")]
 transform = Transform3D(0.991321, 0, -0.131461, 0, 1, 0, 0.131461, 0, 0.991321, 4.31617, -0.00420308, -4.17487)
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("9_4blbq")
+destino = NodePath("../Base/Nave/Mesh/DestinoBateria")
+offset = Vector3(-0.1, 0, 0.25)
 
-[node name="Plane_034" type="MeshInstance3D" parent="ObjetoCarreable"]
+[node name="Plane_034" type="MeshInstance3D" parent="Bateria"]
 transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -0.134518, 0, 0.129907)
 material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_5okts")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjetoCarreable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bateria"]
 shape = SubResource("BoxShape3D_gx3ck")
 
-[node name="Area3D" type="Area3D" parent="ObjetoCarreable"]
-collision_layer = 2
+[node name="Area3D" type="Area3D" parent="Bateria"]
+collision_layer = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjetoCarreable/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bateria/Area3D"]
 shape = SubResource("SphereShape3D_gffcl")
 
 [node name="Control" parent="." instance=ExtResource("10_vmwab")]
 
-[connection signal="body_entered" from="ObjetoCarreable/Area3D" to="ObjetoCarreable" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="ObjetoCarreable/Area3D" to="ObjetoCarreable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_exited"]
 
 [editable path="Camera3D"]
 [editable path="Base/Extra/Puerta5"]
