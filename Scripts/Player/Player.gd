@@ -5,6 +5,7 @@ class_name Player
 var knockback_direction
 @onready var carrying_offset: Node3D = $CarryingOffset
 var can_take : bool
+var object : Node3D
 #Animation Nodes
 @onready var player_gfx: Node3D = $PlayerGFX
 var is_carrying : bool

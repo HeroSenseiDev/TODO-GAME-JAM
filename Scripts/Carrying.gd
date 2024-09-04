@@ -1,6 +1,8 @@
 extends StaticBody3D
 var player : Player
-
+@export var offset : Vector3
+@export var bateria : bool
+@export var objeto2 : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -24,10 +26,11 @@ func _process(delta: float) -> void:
 				#global_position = player.carrying_offset.global_position
 				await get_tree().create_timer(0.3).timeout
 				var tween = get_tree().create_tween()
-				tween.tween_property(self, "global_position", player.carrying_offset.global_position, 0.05)
+				tween.tween_property(self, "global_position", player.carrying_offset.global_position + offset, 0.05)
 				global_rotation = player.carrying_offset.global_rotation
 				self.reparent(player.carrying_offset)
 				player.can_take = false
+				player.object = self
 		
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

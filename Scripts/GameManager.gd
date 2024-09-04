@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 		gui.interact_label.visible = true
 	else:
 		gui.interact_label.visible = false
+		

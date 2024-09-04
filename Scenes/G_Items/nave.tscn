@@ -2781,6 +2781,8 @@ draw_pass_1 = SubResource("PlaneMesh_50ima")
 [node name="ObjetoCarreable" type="StaticBody3D" parent="."]
 transform = Transform3D(0.991321, 0, -0.131461, 0, 1, 0, 0.131461, 0, 0.991321, 4.31617, -0.00420308, -4.17487)
 script = ExtResource("9_4blbq")
+offset = Vector3(-0.12, 0, 0.24)
+bateria = true
 
 [node name="Plane_034" type="MeshInstance3D" parent="ObjetoCarreable"]
 transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -0.134518, 0, 0.129907)
