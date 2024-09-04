@@ -16,6 +16,7 @@ var is_carrying : bool
 var can_set : bool
 @export var state_machine : StateMachine
 func _physics_process(delta: float) -> void:
+	
 	if is_carrying: 
 		set_collision_mask_value(4, false)
 	else:

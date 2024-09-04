@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends MeshInstance3D
 @export var objeto : Node3D
 @export var alert : Sprite3D
 var player : Player
