@@ -6,12 +6,12 @@ var Mini_Juego_node
 @onready var take: SubViewport = $Take
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var take_mini_juego: Node3D = $ConedorSpriter/Scale_Sprite
-@onready var take_mini_juego_2: Sprite3D = $ConedorSpriter/Scale_Sprite/Take_Mini_Juego2
 
 var player
+
 var Player_Enter:bool
 
-var save_positon=Vector3()
+
 #Edit Camara
 var camara
 var camara_save_rotation
@@ -19,7 +19,6 @@ var camara_save_rotation
 @export var Use_reload:bool
 
 func _ready() -> void:
-	save_positon = self.global_position
 	Set_Game()
 	animation_player.play("RESET")
 	player = get_tree().get_first_node_in_group("Player")
@@ -50,6 +49,7 @@ func Enter_Mini_Juego():
 		if not Mini_Juego_node.In_Game:
 			animation_player.play("close")
 			
+			
 
 func Edit_Camara(Enter:bool):
 	if not camara:
@@ -58,14 +58,12 @@ func Edit_Camara(Enter:bool):
 	if not Camara_2D:
 		return
 		
-	if Enter == true:
-		camara.use_Player_position = false
-		self.global_position = Vector3(camara.global_position.x, 0, camara.global_position.z)
+	if Enter:
+		#Camara_2D.look_at(take_mini_juego.global_position, Vector3.UP)
 		camara.Speed_To_Animation(0)
-		
 	else:
-		self.global_position = save_positon
-		camara.use_Player_position = true
+		var tween = create_tween()
+		tween.tween_property(Camara_2D, "rotation_degrees", Vector3(-45, 0, 0), 0.2)
 		camara.Speed_To_Animation(1)
 
 	
