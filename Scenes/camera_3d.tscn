@@ -1,6 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ls5yu4n46jyt"]
+[gd_scene load_steps=14 format=3 uid="uid://ls5yu4n46jyt"]
 
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_itato"]
+[ext_resource type="Environment" uid="uid://cp8qnir5iojc4" path="res://Assets/Materiales/nave.tres" id="2_x1qkb"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_n850d"]
+dof_blur_far_enabled = true
 
 [sub_resource type="Animation" id="Animation_seb4e"]
 resource_name = "Golpe"
@@ -155,6 +159,10 @@ script = ExtResource("1_itato")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 10, 10)
+keep_aspect = 0
+environment = ExtResource("2_x1qkb")
+attributes = SubResource("CameraAttributesPractical_n850d")
+current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

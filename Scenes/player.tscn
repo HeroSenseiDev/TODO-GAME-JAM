@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=54 format=4 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -11049,6 +11049,8 @@ break_loop_at_end = true
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7xxp7"]
 filters = ["Skeleton3D:Def_Anular_L.001", "Skeleton3D:Def_Anular_L.002", "Skeleton3D:Def_Anular_L.003", "Skeleton3D:Def_Anular_R.001", "Skeleton3D:Def_Anular_R.002", "Skeleton3D:Def_Anular_R.003", "Skeleton3D:Def_Brazo_DOWN_L.001", "Skeleton3D:Def_Brazo_DOWN_L.002", "Skeleton3D:Def_Brazo_DOWN_R.001", "Skeleton3D:Def_Brazo_DOWN_R.002", "Skeleton3D:Def_Brazo_UP_L.001", "Skeleton3D:Def_Brazo_UP_L.002", "Skeleton3D:Def_Brazo_UP_R.001", "Skeleton3D:Def_Brazo_UP_R.002", "Skeleton3D:Def_Columna.001", "Skeleton3D:Def_Columna.002", "Skeleton3D:Def_Columna.003", "Skeleton3D:Def_Columna.004", "Skeleton3D:Def_Columna.005", "Skeleton3D:Def_Columna.006", "Skeleton3D:Def_Corazon_L.001", "Skeleton3D:Def_Corazon_L.002", "Skeleton3D:Def_Corazon_L.003", "Skeleton3D:Def_Corazon_R.001", "Skeleton3D:Def_Corazon_R.002", "Skeleton3D:Def_Corazon_R.003", "Skeleton3D:Def_Hombros_L.001", "Skeleton3D:Def_Hombros_L.002", "Skeleton3D:Def_Hombros_R.001", "Skeleton3D:Def_Hombros_R.002", "Skeleton3D:Def_Indice_L.001", "Skeleton3D:Def_Indice_L.002", "Skeleton3D:Def_Indice_L.003", "Skeleton3D:Def_Indice_R.001", "Skeleton3D:Def_Indice_R.002", "Skeleton3D:Def_Indice_R.003", "Skeleton3D:Def_Mano_L.001", "Skeleton3D:Def_Mano_R.001", "Skeleton3D:Ojo_L.001", "Skeleton3D:Ojo_R.001", "Skeleton3D:antena"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_l0k8d"]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gxx80"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kvx4l"]
@@ -11067,7 +11069,7 @@ filters = ["Skeleton3D:Def_Anular_L.001", "Skeleton3D:Def_Anular_L.002", "Skelet
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_obhjo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sfuky"]
-graph_offset = Vector2(-129.723, 224.84)
+graph_offset = Vector2(-376.211, 297.329)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_488ge")
 nodes/Animation/position = Vector2(-220, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_eo23h")
@@ -11079,7 +11081,7 @@ nodes/Animation/position = Vector2(-220, 40)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_lqyds")
 "nodes/Animation 5/position" = Vector2(40, 320)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_3galu")
-"nodes/Animation 6/position" = Vector2(660, 400)
+"nodes/Animation 6/position" = Vector2(760, 420)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_x4rk3")
 "nodes/Animation 7/position" = Vector2(80, 700)
 "nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_wrwbp")
@@ -11093,7 +11095,9 @@ nodes/Choque/position = Vector2(1340, 160)
 nodes/Run_2/node = SubResource("AnimationNodeBlend2_s57qt")
 nodes/Run_2/position = Vector2(-440, 260)
 nodes/Set/node = SubResource("AnimationNodeOneShot_7xxp7")
-nodes/Set/position = Vector2(560, 293.333)
+nodes/Set/position = Vector2(540, 400)
+nodes/Set_Speed/node = SubResource("AnimationNodeTimeScale_l0k8d")
+nodes/Set_Speed/position = Vector2(400, 580)
 nodes/Speed_Choque/node = SubResource("AnimationNodeTimeScale_gxx80")
 nodes/Speed_Choque/position = Vector2(1140, 360)
 nodes/Static_to_Run/node = SubResource("AnimationNodeBlend2_kvx4l")
@@ -11101,7 +11105,7 @@ nodes/Static_to_Run/position = Vector2(-20, 100)
 nodes/Static_to_Run_Take/node = SubResource("AnimationNodeBlend2_p3cah")
 nodes/Static_to_Run_Take/position = Vector2(20, 480)
 nodes/Take/node = SubResource("AnimationNodeOneShot_vecey")
-nodes/Take/position = Vector2(373.333, 293.333)
+nodes/Take/position = Vector2(340, 300)
 nodes/Take_Items/node = SubResource("AnimationNodeBlend2_uoic1")
 nodes/Take_Items/position = Vector2(640, 120)
 nodes/Take_Speed/node = SubResource("AnimationNodeTimeScale_yxp40")
@@ -11109,9 +11113,9 @@ nodes/Take_Speed/position = Vector2(186.667, 266.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_obhjo")
 nodes/TimeScale/position = Vector2(-260, 200)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_wqtpy")
-"nodes/TimeScale 2/position" = Vector2(260, 540)
+"nodes/TimeScale 2/position" = Vector2(260, 580)
 nodes/output/position = Vector2(1580, 200)
-node_connections = [&"Cargando", 0, &"Take_Items", &"Cargando", 1, &"Animation 6", &"Choque", 0, &"Cargando", &"Choque", 1, &"Speed_Choque", &"Run_2", 0, &"Animation 2", &"Run_2", 1, &"Animation 8", &"Set", 0, &"Take", &"Set", 1, &"TimeScale 2", &"Speed_Choque", 0, &"Animation 9", &"Static_to_Run", 0, &"Animation", &"Static_to_Run", 1, &"TimeScale", &"Static_to_Run_Take", 0, &"Animation 3", &"Static_to_Run_Take", 1, &"Animation 4", &"Take", 0, &"Static_to_Run_Take", &"Take", 1, &"Take_Speed", &"Take_Items", 0, &"Static_to_Run", &"Take_Items", 1, &"Set", &"Take_Speed", 0, &"Animation 5", &"TimeScale", 0, &"Run_2", &"TimeScale 2", 0, &"Animation 7", &"output", 0, &"Choque"]
+node_connections = [&"Cargando", 0, &"Take_Items", &"Cargando", 1, &"Animation 6", &"Choque", 0, &"Cargando", &"Choque", 1, &"Speed_Choque", &"Run_2", 0, &"Animation 2", &"Run_2", 1, &"Animation 8", &"Set", 0, &"Take", &"Set", 1, &"Set_Speed", &"Set_Speed", 0, &"TimeScale 2", &"Speed_Choque", 0, &"Animation 9", &"Static_to_Run", 0, &"Animation", &"Static_to_Run", 1, &"TimeScale", &"Static_to_Run_Take", 0, &"Animation 3", &"Static_to_Run_Take", 1, &"Animation 4", &"Take", 0, &"Static_to_Run_Take", &"Take", 1, &"Take_Speed", &"Take_Items", 0, &"Static_to_Run", &"Take_Items", 1, &"Set", &"Take_Speed", 0, &"Animation 5", &"TimeScale", 0, &"Run_2", &"TimeScale 2", 0, &"Animation 7", &"output", 0, &"Choque"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
 
@@ -11124,8 +11128,6 @@ height = 2.17213
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("state_machine") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 9
-collision_mask = 9
 script = ExtResource("1_3ccag")
 state_machine = NodePath("StateMachine")
 
@@ -11613,6 +11615,7 @@ parameters/Run_2/blend_amount = 0.0
 parameters/Set/active = false
 parameters/Set/internal_active = false
 parameters/Set/request = 0
+parameters/Set_Speed/scale = 1.0
 parameters/Speed_Choque/scale = 1.0
 parameters/Static_to_Run/blend_amount = 0.0
 parameters/Static_to_Run_Take/blend_amount = 0.0
@@ -11644,7 +11647,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16697, 0)
 shape = SubResource("CapsuleShape3D_68nmv")
 
 [node name="CarryingOffset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100953, 0.763674, -0.232291)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.15675, 1.03241)
