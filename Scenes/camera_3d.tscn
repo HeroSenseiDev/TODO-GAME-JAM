@@ -2,80 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_itato"]
 
-[sub_resource type="Animation" id="Animation_seb4e"]
-resource_name = "Golpe"
-length = 0.708338
-step = 0.0416667
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.104198, 0.370123, 9.26807, -0.125, -0.020793, 0.0833333, 0.0311909, 11.0251, -0.0833333, -0.82134, 0.104198, 0.831736, 10.3181, -0.0624691, 0.551024, 0.0625309, -0.634199, 10, -0.104136, 0.0686188, 0.25, 0),
-"times": PackedFloat32Array(0.0416667, 0.208333, 0.291667, 0.5, 0.708333)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
-}
-
-[sub_resource type="Animation" id="Animation_dc2mr"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="Animation" id="Animation_a11xm"]
 resource_name = "run"
 length = 10.0
@@ -114,6 +40,80 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 10)
 }
 
+[sub_resource type="Animation" id="Animation_dc2mr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_seb4e"]
+resource_name = "Golpe"
+length = 0.708338
+step = 0.0416667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.104198, 0.370123, 9.26807, -0.125, -0.020793, 0.0833333, 0.0311909, 11.0251, -0.0833333, -0.82134, 0.104198, 0.831736, 10.3181, -0.0624691, 0.551024, 0.0625309, -0.634199, 10, -0.104136, 0.0686188, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.291667, 0.5, 0.708333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0416667, 0.208333, 0.375, 0.708333)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_odhsw"]
 _data = {
 "Golpe": SubResource("Animation_seb4e"),
@@ -137,7 +137,7 @@ fadeout_time = 0.2
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_h4dvx"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cuwp8"]
-graph_offset = Vector2(-512.348, 202.217)
+graph_offset = Vector2(-689.553, 303.713)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_60ugt")
 nodes/Animation/position = Vector2(-380, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1hqj2")
@@ -150,7 +150,7 @@ nodes/Speed/node = SubResource("AnimationNodeTimeScale_h4dvx")
 nodes/Speed/position = Vector2(-140, 140)
 node_connections = [&"Fuerza", 0, &"Animation 2", &"Golpe", 0, &"Speed", &"Golpe", 1, &"Fuerza", &"Speed", 0, &"Animation", &"output", 0, &"Golpe"]
 
-[node name="Camara" type="Node3D" groups=["Camara"]]
+[node name="Camara" type="Node3D"]
 script = ExtResource("1_itato")
 
 [node name="Camera3D" type="Camera3D" parent="."]
