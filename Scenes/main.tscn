@@ -19,11 +19,11 @@ material = SubResource("StandardMaterial3D_cpvmd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuonx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4r0f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5ici"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hrm32"]
-material = SubResource("StandardMaterial3D_e4r0f")
+material = SubResource("StandardMaterial3D_i5ici")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v61ee"]
 
@@ -46,7 +46,7 @@ material = SubResource("StandardMaterial3D_atrt5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278372, 0.822998, 0.479748)
 shape = SubResource("BoxShape3D_18g3p")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_c82ne")]
+[node name="Player" parent="." instance=ExtResource("1_c82ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32065, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

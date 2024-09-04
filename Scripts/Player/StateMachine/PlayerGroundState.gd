@@ -25,7 +25,9 @@ func process(delta):
 		
 		# Rotar el personaje hacia la dirección del movimiento
 		var target_rotation_y := atan2(direction.x, direction.z)
-		player.rotation.y = lerp_angle(player.rotation.y, target_rotation_y, delta * 25)
+		player.rotation.y = lerp_angle(player.rotation.y, target_rotation_y, delta * 10)
+		
+		
 	else:
 		# Aplicar fricción cuando no hay input
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
@@ -34,7 +36,7 @@ func process(delta):
 	# Mover al personaje
 	player.velocity.x = velocity.x
 	player.velocity.z = velocity.z
-	player.player_gfx.Set_Animation(player.velocity, true, false, false, 0.1)
+	player.player_gfx.Set_Animation(player.velocity, true, player.is_carrying, false, 0.1)
 
 func _on_trip_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Obstacles"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=52 format=4 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -11059,12 +11059,14 @@ filters = ["Skeleton3D:Def_Anular_L.001", "Skeleton3D:Def_Anular_L.002", "Skelet
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_uoic1"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yxp40"]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wqtpy"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_obhjo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sfuky"]
-graph_offset = Vector2(-328.967, -58.3236)
+graph_offset = Vector2(-129.723, 224.84)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_488ge")
 nodes/Animation/position = Vector2(-220, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_eo23h")
@@ -11090,7 +11092,7 @@ nodes/Choque/position = Vector2(1340, 160)
 nodes/Run_2/node = SubResource("AnimationNodeBlend2_s57qt")
 nodes/Run_2/position = Vector2(-440, 260)
 nodes/Set/node = SubResource("AnimationNodeOneShot_7xxp7")
-nodes/Set/position = Vector2(440, 260)
+nodes/Set/position = Vector2(560, 293.333)
 nodes/Speed_Choque/node = SubResource("AnimationNodeTimeScale_gxx80")
 nodes/Speed_Choque/position = Vector2(1140, 360)
 nodes/Static_to_Run/node = SubResource("AnimationNodeBlend2_kvx4l")
@@ -11098,15 +11100,17 @@ nodes/Static_to_Run/position = Vector2(-20, 100)
 nodes/Static_to_Run_Take/node = SubResource("AnimationNodeBlend2_p3cah")
 nodes/Static_to_Run_Take/position = Vector2(20, 480)
 nodes/Take/node = SubResource("AnimationNodeOneShot_vecey")
-nodes/Take/position = Vector2(240, 280)
+nodes/Take/position = Vector2(373.333, 293.333)
 nodes/Take_Items/node = SubResource("AnimationNodeBlend2_uoic1")
 nodes/Take_Items/position = Vector2(640, 120)
+nodes/Take_Speed/node = SubResource("AnimationNodeTimeScale_yxp40")
+nodes/Take_Speed/position = Vector2(186.667, 266.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_obhjo")
 nodes/TimeScale/position = Vector2(-260, 200)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_wqtpy")
 "nodes/TimeScale 2/position" = Vector2(260, 540)
 nodes/output/position = Vector2(1580, 200)
-node_connections = [&"Cargando", 0, &"Take_Items", &"Cargando", 1, &"Animation 6", &"Choque", 0, &"Cargando", &"Choque", 1, &"Speed_Choque", &"Run_2", 0, &"Animation 2", &"Run_2", 1, &"Animation 8", &"Set", 0, &"Take", &"Set", 1, &"TimeScale 2", &"Speed_Choque", 0, &"Animation 9", &"Static_to_Run", 0, &"Animation", &"Static_to_Run", 1, &"TimeScale", &"Static_to_Run_Take", 0, &"Animation 3", &"Static_to_Run_Take", 1, &"Animation 4", &"Take", 0, &"Static_to_Run_Take", &"Take", 1, &"Animation 5", &"Take_Items", 0, &"Static_to_Run", &"Take_Items", 1, &"Set", &"TimeScale", 0, &"Run_2", &"TimeScale 2", 0, &"Animation 7", &"output", 0, &"Choque"]
+node_connections = [&"Cargando", 0, &"Take_Items", &"Cargando", 1, &"Animation 6", &"Choque", 0, &"Cargando", &"Choque", 1, &"Speed_Choque", &"Run_2", 0, &"Animation 2", &"Run_2", 1, &"Animation 8", &"Set", 0, &"Take", &"Set", 1, &"TimeScale 2", &"Speed_Choque", 0, &"Animation 9", &"Static_to_Run", 0, &"Animation", &"Static_to_Run", 1, &"TimeScale", &"Static_to_Run_Take", 0, &"Animation 3", &"Static_to_Run_Take", 1, &"Animation 4", &"Take", 0, &"Static_to_Run_Take", &"Take", 1, &"Take_Speed", &"Take_Items", 0, &"Static_to_Run", &"Take_Items", 1, &"Set", &"Take_Speed", 0, &"Animation 5", &"TimeScale", 0, &"Run_2", &"TimeScale 2", 0, &"Animation 7", &"output", 0, &"Choque"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
 
@@ -11117,7 +11121,7 @@ albedo_color = Color(0, 0, 0, 1)
 radius = 0.821489
 height = 2.17213
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_3ccag")
 
@@ -11609,6 +11613,7 @@ parameters/Take/active = false
 parameters/Take/internal_active = false
 parameters/Take/request = 0
 parameters/Take_Items/blend_amount = 0.0
+parameters/Take_Speed/scale = 1.0
 parameters/TimeScale/scale = 1.2
 "parameters/TimeScale 2/scale" = -1.0
 
@@ -11632,7 +11637,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16697, 0)
 shape = SubResource("CapsuleShape3D_68nmv")
 
 [node name="CarryingOffset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34753, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100953, 0.763674, -0.232291)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.15675, 1.03241)

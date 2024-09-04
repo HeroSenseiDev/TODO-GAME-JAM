@@ -31,10 +31,12 @@ func Set_Animation(velocity:Vector3, Use_Run_2:bool, Take_Items:bool, Use_Set_Po
 		
 		tween.tween_property(animation_tree, "parameters/Cargando/blend_amount", 1.0, Speed_Transtion)
 
-func Set_Animation_Take(How:String = "TAKE"):
+func Set_Animation_Take(How:String = "TAKE", Take_Speed:float= 1, Set_Speed:float= 1):
 	if How == "TAKE":
+		animation_tree["parameters/Take_Speed/scale"] = Take_Speed
 		animation_tree.set("parameters/Take/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	elif How == "SET":
+		animation_tree["parameters/Set_Speed/scale"] = Set_Speed
 		animation_tree.set("parameters/Set/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func Set_Animation_Choque(Speed:float = 1.0):
