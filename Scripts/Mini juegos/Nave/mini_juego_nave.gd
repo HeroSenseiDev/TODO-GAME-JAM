@@ -17,7 +17,7 @@ var Ramdon = RandomNumberGenerator.new()
 var Real_Time = 0
 
 var Run_Game:bool
-var IN_Game:bool
+var In_Game:bool
 var Win_Dead:String
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +31,7 @@ func Set_Win(delta):
 	label.text =  str(int(Real_Time)) + "/%s" % [Limit_Time]
 	if Real_Time >= Limit_Time:
 		nave_player.get_node("Kill My/CollisionShape2D").disabled = true
-		IN_Game = false
+		In_Game = false
 		Win_Dead = "WIN"
 		print("Win")
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
@@ -40,8 +40,8 @@ func Set_Win(delta):
 func _process(delta: float) -> void:
 	
 	if Run_Game:
-		if not IN_Game:
-			IN_Game = true
+		if not In_Game:
+			In_Game = true
 		Run(delta)
 	
 func Run(delta):
@@ -57,7 +57,7 @@ func Run(delta):
 		Inputs_Meteoritos()
 	
 	if nave_player.Nave_Player_Dead:
-		IN_Game = false
+		In_Game = false
 		Win_Dead = "DEAD"
 		print("DEAD")
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 

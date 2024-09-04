@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://o7kscbaysa3x"]
+[gd_scene load_steps=8 format=3 uid="uid://o7kscbaysa3x"]
 
 [ext_resource type="Script" path="res://Scripts/Mini juegos/enter_mini_juego.gd" id="1_nv4tr"]
-[ext_resource type="Script" path="res://Scripts/Mini juegos/state_machine.gd" id="2_yctki"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fthfi"]
-size = Vector3(1, 1.43079, 1)
+size = Vector3(1.72168, 1.43079, 2.21509)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ouxyw"]
 viewport_path = NodePath("Take")
@@ -14,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Take_Mini_Juego:visible")
+tracks/0/path = NodePath("ConedorSpriter/Take_Mini_Juego:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Take_Mini_Juego:scale:x")
+tracks/1/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Take_Mini_Juego:scale:y")
+tracks/2/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Take_Mini_Juego:scale:z")
+tracks/3/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,7 +61,7 @@ resource_name = "close"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Take_Mini_Juego:visible")
+tracks/0/path = NodePath("ConedorSpriter/Take_Mini_Juego:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Take_Mini_Juego:scale:x")
+tracks/1/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +84,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Take_Mini_Juego:scale:y")
+tracks/2/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -96,7 +95,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Take_Mini_Juego:scale:z")
+tracks/3/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -110,7 +109,7 @@ resource_name = "enter"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Take_Mini_Juego:visible")
+tracks/0/path = NodePath("ConedorSpriter/Take_Mini_Juego:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -122,7 +121,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Take_Mini_Juego:scale:x")
+tracks/1/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -133,7 +132,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Take_Mini_Juego:scale:y")
+tracks/2/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +143,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Take_Mini_Juego:scale:z")
+tracks/3/path = NodePath("ConedorSpriter/Take_Mini_Juego:scale:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -163,17 +162,16 @@ _data = {
 [node name="Enter_Mini_Juego" type="Node3D"]
 script = ExtResource("1_nv4tr")
 
-[node name="State_Machine" type="Node" parent="."]
-script = ExtResource("2_yctki")
-
 [node name="Player_enter" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player_enter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215393, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.215393, 0)
 shape = SubResource("BoxShape3D_fthfi")
 
-[node name="Take_Mini_Juego" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.353553, -0.353553, 0, 0.353553, 0.353553, 0, 5, 0)
+[node name="ConedorSpriter" type="Node3D" parent="."]
+
+[node name="Take_Mini_Juego" type="Sprite3D" parent="ConedorSpriter"]
+transform = Transform3D(0.5, 0, 0, 0, 0.353553, -0.353553, 0, 0.353553, 0.353553, 0, 4, 0)
 visible = false
 axis = 1
 texture = SubResource("ViewportTexture_ouxyw")
