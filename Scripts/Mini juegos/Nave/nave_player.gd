@@ -6,21 +6,19 @@ extends CharacterBody2D
 @export var Max_Arrastre_Rotation: float = 30
 var Arrastre:float
 @onready var rot: Marker2D = $Rot
-@onready var kill: AnimationPlayer = $kill
 
 
 var Nave_Player_Dead:bool
 
 func _physics_process(delta: float) -> void:
 	
-	if get_parent() and get_parent().Run_Game and rot.visible:
+	if get_parent().Run_Game:
 		Move(delta)
 
 func Move(delta):
 	if Input.is_action_pressed("ui_left"):
 		if Arrastre >= -Max_Arrastre: 
 			Arrastre -= 20  
-			
 		if rot.rotation_degrees >= -Max_Arrastre_Rotation:
 			rot.rotation_degrees  -= 10
 	else:
@@ -30,7 +28,6 @@ func Move(delta):
 	if Input.is_action_pressed("ui_right"):
 		if Arrastre <= Max_Arrastre: 
 			Arrastre += 20 
-			
 		if rot.rotation_degrees <= Max_Arrastre_Rotation:
 			rot.rotation_degrees += 10 
 	else:
@@ -47,24 +44,13 @@ func Move(delta):
 
 		if Arrastre < 0:
 			Arrastre += Max_Arrastre * delta
-		
-		if self.global_position.x >= 855:
-			self.global_position.x = -32
-			velocity.x -= Arrastre
-		elif self.global_position.x <= -35:
-			self.global_position.x = 850
-			velocity.x += Arrastre
-		else:
-			velocity.x = direction * SPEED * 100  * delta
-			velocity.x += Arrastre
+
+		velocity.x = direction * SPEED * 100  * delta 
+		velocity.x += Arrastre 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 
 
 func _on_kill_my_area_entered(area: Area2D) -> void:
-	kill.play("kill")
-	rot.visible = false
-
-func _on_kill_animation_finished(anim_name: StringName) -> void:
 	Nave_Player_Dead = true

@@ -2783,14 +2783,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.10094, -0.000
 [node name="Puerta_Grande" parent="Base/Extra" instance=ExtResource("5_2ocgr")]
 transform = Transform3D(0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, 0.919135, -6.498, 0, -7.991)
 
-[node name="Skeleton3D" parent="Base/Extra/Puerta_Grande/Puerta_Basudero/Armature" index="0"]
-bones/3/scale = Vector3(1, 0.969664, 1)
-bones/4/scale = Vector3(1, 1.03282, 1)
-bones/5/position = Vector3(-7.15898e-10, 0.207877, -2.54149e-08)
-bones/9/scale = Vector3(1, 0.969664, 1)
-bones/10/scale = Vector3(1, 1.03282, 1)
-bones/11/position = Vector3(7.15898e-10, 0.207877, -2.54149e-08)
-
 [node name="Area3D" parent="Base/Extra/Puerta_Grande" index="3"]
 collision_layer = 2
 
