@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddrq7qcbhnafu"]
+[gd_scene load_steps=11 format=3 uid="uid://ddrq7qcbhnafu"]
 
 [ext_resource type="Script" path="res://Scripts/Mini juegos/Nave/mini_juego_nave.gd" id="1_52rgk"]
 [ext_resource type="PackedScene" uid="uid://2falc2frptio" path="res://Scenes2D/Nave/nave_player.tscn" id="1_p27bm"]
@@ -26,6 +26,13 @@ gradient = SubResource("Gradient_1752u")
 width = 1
 height = 50
 
+[sub_resource type="Gradient" id="Gradient_2rf2x"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4aggd"]
+gradient = SubResource("Gradient_2rf2x")
+width = 10
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16y2g"]
 size = Vector2(724, 31)
 
@@ -36,6 +43,7 @@ font_size = 50
 font_size = 200
 
 [node name="Mini Juego Nave" type="Node2D"]
+position = Vector2(-1, 0)
 script = ExtResource("1_52rgk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -51,6 +59,17 @@ process_material = SubResource("ParticleProcessMaterial_1x6cl")
 texture = SubResource("GradientTexture2D_fbcap")
 preprocess = 1.0
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.078, 0.235, 0.334, 0.324)
+z_index = 1
+texture_filter = 3
+offset_left = 820.0
+offset_right = 1640.0
+offset_bottom = 820.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_4aggd")
+metadata/_edit_use_anchors_ = true
+
 [node name="Nave_Player" parent="." instance=ExtResource("1_p27bm")]
 position = Vector2(420, 540)
 
@@ -64,6 +83,7 @@ shape = SubResource("RectangleShape2D_16y2g")
 autostart = true
 
 [node name="Label" type="Label" parent="."]
+z_index = 2
 offset_right = 820.0
 offset_bottom = 69.0
 text = "Hola"
