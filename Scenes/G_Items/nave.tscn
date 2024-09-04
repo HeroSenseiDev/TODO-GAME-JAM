@@ -1,8 +1,7 @@
-[gd_scene load_steps=168 format=4 uid="uid://c7spk8gku5cov"]
+[gd_scene load_steps=167 format=4 uid="uid://c7spk8gku5cov"]
 
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_5euto"]
 [ext_resource type="PackedScene" uid="uid://4w182mkeoav1" path="res://Scenes/player.tscn" id="2_ujtjy"]
-[ext_resource type="Environment" uid="uid://cp8qnir5iojc4" path="res://Assets/Materiales/nave.tres" id="2_uty12"]
 [ext_resource type="Texture2D" uid="uid://cyqwj7n67fki6" path="res://Assets/Materiales/Estrellas.png" id="3_6nj3l"]
 [ext_resource type="PackedScene" uid="uid://ls5yu4n46jyt" path="res://Scenes/camera_3d.tscn" id="3_c05gl"]
 [ext_resource type="Script" path="res://Scripts/Items/estrellas.gd" id="3_r1j11"]
@@ -2156,10 +2155,7 @@ _player = NodePath("../Player")
 limite_Position = Vector2(10, 10)
 
 [node name="Camera3D" parent="Camera3D" index="0"]
-keep_aspect = 0
-environment = ExtResource("2_uty12")
 attributes = SubResource("CameraAttributesPractical_c3aer")
-current = true
 
 [node name="Player" parent="." instance=ExtResource("2_ujtjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62479, 0)
@@ -2834,6 +2830,7 @@ shape = SubResource("SphereShape3D_gffcl")
 [node name="Control" parent="." instance=ExtResource("10_vmwab")]
 
 [connection signal="area_entered" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_exited"]
 
