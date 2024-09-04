@@ -14,7 +14,7 @@ var Enter_Mini_Juego:bool
 var is_carrying : bool
 @export var offset : Vector2
 
-
+@export var state_machine : StateMachine
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

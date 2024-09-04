@@ -6,7 +6,7 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var Player_Enter:bool
-
+var player : Player
 
 var Run_Game:bool
 
@@ -14,6 +14,7 @@ var Run_Game:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	Set_Game()
 	animation_player.play("RESET")
 	
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 	if Player_Enter and not Mini_Juego.In_Game:
 		if Input.is_action_just_pressed("Take"):
 			Mini_Juego.Run_Game = true
+			player.state_machine.change_to("PlayerGameState")
 			animation_player.play("enter")
 	
 	if Mini_Juego.Win_Dead == "WIN" or Mini_Juego.Win_Dead == "DEAD":
