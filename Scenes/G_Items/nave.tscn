@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=4 uid="uid://c7spk8gku5cov"]
+[gd_scene load_steps=167 format=4 uid="uid://c7spk8gku5cov"]
 
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_5euto"]
 [ext_resource type="PackedScene" uid="uid://4w182mkeoav1" path="res://Scenes/player.tscn" id="2_ujtjy"]
@@ -7,10 +7,15 @@
 [ext_resource type="Script" path="res://Scripts/Items/estrellas.gd" id="3_r1j11"]
 [ext_resource type="PackedScene" uid="uid://bo6opq4fmp2ca" path="res://Scenes/G_Items/puerta.tscn" id="4_ggp24"]
 [ext_resource type="PackedScene" uid="uid://cgwtpw837ti78" path="res://Scenes/G_Items/puerta_grande.tscn" id="5_2ocgr"]
+[ext_resource type="Script" path="res://Scripts/Destiny.gd" id="7_nlikw"]
+[ext_resource type="Texture2D" uid="uid://q4mfyvddm6x7" path="res://Resources/2D/Energy Alert.png" id="8_11jxi"]
 [ext_resource type="Script" path="res://Scripts/Carrying.gd" id="9_4blbq"]
 [ext_resource type="PackedScene" uid="uid://o7kscbaysa3x" path="res://Scenes/enter_mini_juego.tscn" id="9_bhe2o"]
 [ext_resource type="PackedScene" uid="uid://c0rflr1tx0iwi" path="res://Scenes/GUI/GUI.tscn" id="10_vmwab"]
 [ext_resource type="PackedScene" uid="uid://ddrq7qcbhnafu" path="res://Scenes2D/Nave/mini_juego_nave.tscn" id="10_w2tqy"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c3aer"]
+dof_blur_far_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg0b5"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1489,6 +1494,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3krdw")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4oy0"]
+size = Vector3(1.78613, 1.73718, 1.81732)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_ngkan"]
 _surfaces = [{
 "aabb": AABB(-0.171248, 0.0134894, -0.171248, 0.342496, 0.189822, 0.342496),
@@ -2142,8 +2150,12 @@ radius = 1.0
 
 [node name="Nave" type="Node3D"]
 
-[node name="Camara" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("3_c05gl")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("3_c05gl")]
 _player = NodePath("../Player")
+limite_Position = Vector2(10, 10)
+
+[node name="Camera3D" parent="Camera3D" index="0"]
+attributes = SubResource("CameraAttributesPractical_c3aer")
 
 [node name="Player" parent="." instance=ExtResource("2_ujtjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62479, 0)
@@ -2422,11 +2434,26 @@ material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_gik2d")
 skeleton = NodePath("")
 
-[node name="Cube_057" type="MeshInstance3D" parent="Base/Nave/Mesh"]
+[node name="DestinoBateria" type="MeshInstance3D" parent="Base/Nave/Mesh" node_paths=PackedStringArray("objeto", "alert")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84381, 0, -8.84137)
 material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_3kvx2")
 skeleton = NodePath("")
+script = ExtResource("7_nlikw")
+objeto = NodePath("../../../../Bateria")
+alert = NodePath("Sprite3D")
+
+[node name="Area3D" type="Area3D" parent="Base/Nave/Mesh/DestinoBateria"]
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Nave/Mesh/DestinoBateria/Area3D"]
+transform = Transform3D(1, 0, 1.09424e-12, 0, 1, 0, -1.09424e-12, 0, 1, -1.09078, 1.31574, 0.13028)
+shape = SubResource("BoxShape3D_d4oy0")
+
+[node name="Sprite3D" type="Sprite3D" parent="Base/Nave/Mesh/DestinoBateria"]
+transform = Transform3D(0.3, 0, 2.66454e-15, 0, 0.3, 0, -2.66454e-15, 0, 0.3, 0, 3.10963, 0)
+billboard = 1
+texture = ExtResource("8_11jxi")
 
 [node name="Cube_058" type="MeshInstance3D" parent="Base/Nave/Mesh"]
 transform = Transform3D(0.648795, -0.0297231, 0.00090111, 0.021711, 0.460023, -0.457959, 0.0203201, 0.457509, 0.460534, -0.657493, 0.48408, -9.71784)
@@ -2779,29 +2806,34 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.6032
 Mini_Juego = ExtResource("10_w2tqy")
 Use_reload = true
 
-[node name="ObjetoCarreable" type="StaticBody3D" parent="."]
+[node name="Bateria" type="StaticBody3D" parent="."]
 transform = Transform3D(0.991321, 0, -0.131461, 0, 1, 0, 0.131461, 0, 0.991321, 4.31617, -0.00420308, -4.17487)
+collision_layer = 8
 script = ExtResource("9_4blbq")
+offset = Vector3(-0.1, 0, 0.3)
 
-[node name="Plane_034" type="MeshInstance3D" parent="ObjetoCarreable"]
+[node name="Plane_034" type="MeshInstance3D" parent="Bateria"]
 transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -0.134518, 0, 0.129907)
 material_override = ExtResource("2_5euto")
 mesh = SubResource("ArrayMesh_5okts")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjetoCarreable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bateria"]
 shape = SubResource("BoxShape3D_gx3ck")
 
-[node name="Area3D" type="Area3D" parent="ObjetoCarreable"]
-collision_layer = 2
+[node name="Area3D" type="Area3D" parent="Bateria"]
+collision_layer = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjetoCarreable/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bateria/Area3D"]
 shape = SubResource("SphereShape3D_gffcl")
 
 [node name="Control" parent="." instance=ExtResource("10_vmwab")]
 
-[connection signal="body_entered" from="ObjetoCarreable/Area3D" to="ObjetoCarreable" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="ObjetoCarreable/Area3D" to="ObjetoCarreable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Base/Nave/Mesh/DestinoBateria/Area3D" to="Base/Nave/Mesh/DestinoBateria" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Bateria/Area3D" to="Bateria" method="_on_area_3d_body_exited"]
 
+[editable path="Camera3D"]
 [editable path="Base/Extra/Puerta5"]
 [editable path="Base/Extra/Puerta_Grande"]
