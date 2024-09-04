@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yct3c08hv6sa"
-path.s3tc="res://.godot/imported/Puertas_Base_textura.png-7a362d74a9e13386b0ddae5aacb69708.s3tc.ctex"
+uid="uid://dph8x57a6sl2h"
+path="res://.godot/imported/Meteorito.png-2c3b00f17aab50589ff089bbf348997b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Modelos/Puertas/Puertas_Base_textura.png"
-dest_files=["res://.godot/imported/Puertas_Base_textura.png-7a362d74a9e13386b0ddae5aacb69708.s3tc.ctex"]
+source_file="res://Scenes2D/Nave/Spriter/Meteorito.png"
+dest_files=["res://.godot/imported/Meteorito.png-2c3b00f17aab50589ff089bbf348997b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

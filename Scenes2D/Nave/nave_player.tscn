@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://2falc2frptio"]
+
+[ext_resource type="Texture2D" uid="uid://wm5ss721732q" path="res://Scenes2D/Nave/Spriter/nave.png" id="1_6ccae"]
+[ext_resource type="Script" path="res://Scripts/Mini juegos/Nave/nave_player.gd" id="1_vqdak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgtp0"]
+radius = 26.0768
+
+[node name="Nave_Player" type="CharacterBody2D"]
+script = ExtResource("1_vqdak")
+
+[node name="Rot" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot"]
+texture_filter = 3
+position = Vector2(0, 32)
+scale = Vector2(8, 8)
+texture = ExtResource("1_6ccae")
+
+[node name="Kill My" type="Area2D" parent="." groups=["Nave_Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill My"]
+position = Vector2(0, 35)
+shape = SubResource("CircleShape2D_bgtp0")
+
+[connection signal="area_entered" from="Kill My" to="." method="_on_kill_my_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=4 uid="uid://c7spk8gku5cov"]
+[gd_scene load_steps=164 format=4 uid="uid://c7spk8gku5cov"]
 
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_5euto"]
 [ext_resource type="PackedScene" uid="uid://4w182mkeoav1" path="res://Scenes/player.tscn" id="2_ujtjy"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bo6opq4fmp2ca" path="res://Scenes/G_Items/puerta.tscn" id="4_ggp24"]
 [ext_resource type="PackedScene" uid="uid://cgwtpw837ti78" path="res://Scenes/G_Items/puerta_grande.tscn" id="5_2ocgr"]
 [ext_resource type="Script" path="res://Scripts/Carrying.gd" id="9_4blbq"]
+[ext_resource type="PackedScene" uid="uid://o7kscbaysa3x" path="res://Scenes/enter_mini_juego.tscn" id="9_bhe2o"]
 [ext_resource type="PackedScene" uid="uid://c0rflr1tx0iwi" path="res://Scenes/GUI/GUI.tscn" id="10_vmwab"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c3aer"]
@@ -2753,6 +2754,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.10094, -0.000
 [node name="Puerta_Grande" parent="Base/Extra" instance=ExtResource("5_2ocgr")]
 transform = Transform3D(0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, 0.919135, -6.498, 0, -7.991)
 
+[node name="Area3D" parent="Base/Extra/Puerta_Grande" index="3"]
+collision_layer = 2
+
 [node name="Gradientes" type="Node3D" parent="Base/Extra"]
 
 [node name="Sprite3D" type="Sprite3D" parent="Base/Extra/Gradientes"]
@@ -2778,11 +2782,14 @@ visibility_aabb = AABB(-35.5, 0, -77.775, 70, 20, 70)
 process_material = SubResource("ParticleProcessMaterial_yb15m")
 draw_pass_1 = SubResource("PlaneMesh_50ima")
 
+[node name="Minijuegos" type="Node3D" parent="Base"]
+
+[node name="Enter_Mini_Juego" parent="Base/Minijuegos" instance=ExtResource("9_bhe2o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05321, 0, 9.84018)
+
 [node name="ObjetoCarreable" type="StaticBody3D" parent="."]
 transform = Transform3D(0.991321, 0, -0.131461, 0, 1, 0, 0.131461, 0, 0.991321, 4.31617, -0.00420308, -4.17487)
 script = ExtResource("9_4blbq")
-offset = Vector3(-0.12, 0, 0.24)
-bateria = true
 
 [node name="Plane_034" type="MeshInstance3D" parent="ObjetoCarreable"]
 transform = Transform3D(0.986809, 0, 0.161888, 0, 1, 0, -0.161888, 0, 0.986809, -0.134518, 0, 0.129907)
@@ -2806,3 +2813,4 @@ shape = SubResource("SphereShape3D_gffcl")
 
 [editable path="Camera3D"]
 [editable path="Base/Extra/Puerta5"]
+[editable path="Base/Extra/Puerta_Grande"]

@@ -36,7 +36,7 @@ func process(delta):
 	# Mover al personaje
 	player.velocity.x = velocity.x
 	player.velocity.z = velocity.z
-	player.player_gfx.Set_Animation(player.velocity, true, player.is_carrying, false, 0.1)
+	player.player_gfx.Set_Animation(player.velocity, true, player.is_carrying, false, 0.11)
 
 func _on_trip_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Obstacles"):

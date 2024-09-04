@@ -11637,7 +11637,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16697, 0)
 shape = SubResource("CapsuleShape3D_68nmv")
 
 [node name="CarryingOffset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100953, 0.763674, -0.232291)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.15675, 1.03241)

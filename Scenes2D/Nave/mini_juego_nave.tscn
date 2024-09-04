@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddrq7qcbhnafu"]
+
+[ext_resource type="Script" path="res://Scripts/Mini juegos/Nave/mini_juego_nave.gd" id="1_52rgk"]
+[ext_resource type="PackedScene" uid="uid://2falc2frptio" path="res://Scenes2D/Nave/nave_player.tscn" id="1_p27bm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1x6cl"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(820, 1, 1)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 2000, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 2.38
+scale_min = 0.2
+scale_max = 2.0
+hue_variation_min = -0.09
+hue_variation_max = 0.06
+
+[sub_resource type="Gradient" id="Gradient_1752u"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fbcap"]
+gradient = SubResource("Gradient_1752u")
+width = 1
+height = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16y2g"]
+size = Vector2(724, 31)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5nfs"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_p12tt"]
+font_size = 200
+
+[node name="Mini Juego Nave" type="Node2D"]
+script = ExtResource("1_52rgk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 820.0
+offset_bottom = 820.0
+color = Color(0.00291036, 0.0227159, 0.0877243, 1)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.379)
+position = Vector2(399, -4)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_1x6cl")
+texture = SubResource("GradientTexture2D_fbcap")
+preprocess = 1.0
+
+[node name="Nave_Player" parent="." instance=ExtResource("1_p27bm")]
+position = Vector2(420, 540)
+
+[node name="Area_Inputs_meteoritos" type="Area2D" parent="."]
+
+[node name="Inputs_meteoritos" type="CollisionShape2D" parent="Area_Inputs_meteoritos"]
+position = Vector2(402, -20)
+shape = SubResource("RectangleShape2D_16y2g")
+
+[node name="Set_meteorito" type="Timer" parent="Area_Inputs_meteoritos"]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 820.0
+offset_bottom = 69.0
+text = "Hola"
+label_settings = SubResource("LabelSettings_t5nfs")
+horizontal_alignment = 1
+
+[node name="Win" type="Label" parent="."]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 393.0
+offset_right = 820.0
+offset_bottom = 462.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(410, 136)
+size_flags_horizontal = 4
+text = "Win
+"
+label_settings = SubResource("LabelSettings_p12tt")
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Area_Inputs_meteoritos/Set_meteorito" to="." method="_on_set_meteorito_timeout"]

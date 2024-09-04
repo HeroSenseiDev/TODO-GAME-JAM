@@ -5,11 +5,15 @@ class_name Player
 var knockback_direction
 @onready var carrying_offset: Node3D = $CarryingOffset
 var can_take : bool
-var object : Node3D
+
+#Enter Mini Juego
+var Enter_Mini_Juego:bool
+
 #Animation Nodes
 @onready var player_gfx: Node3D = $PlayerGFX
 var is_carrying : bool
 @export var offset : Vector2
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

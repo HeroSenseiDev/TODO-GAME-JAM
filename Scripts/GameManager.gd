@@ -10,7 +10,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player.can_take == true:
-		gui.interact_label.visible = true
+		if gui:
+			gui.interact_label.visible = true
 	else:
-		gui.interact_label.visible = false
-		
+		if gui:
+			gui.interact_label.visible = false
