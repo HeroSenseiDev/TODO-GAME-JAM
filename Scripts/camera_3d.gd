@@ -17,11 +17,11 @@ func _process(delta: float) -> void:
 
 # Velosidad del la Animacion
 func Speed_To_Animation(Speed:float=1):
-	animation_tree["parameters/Speed/blend_amount"] = Speed
+	animation_tree["parameters/Speed/scale"] = Speed
 
 
 # Para Cuando Pasa Algo Muy Fuerte en la Scena
 func Set_Camara_Golpe(Fuerza:float=2):
-	animation_tree["parameters/Fuerza/blend_amount"] = Fuerza
+	animation_tree["parameters/Fuerza/scale"] = Fuerza
 	animation_tree.set("parameters/Golpe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
