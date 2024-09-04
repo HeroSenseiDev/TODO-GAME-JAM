@@ -17,8 +17,3 @@ func _process(delta: float) -> void:
 	else:
 		if gui:
 			gui.interact_label.visible = false
-			
-	if player.can_set:
-		gui.set_label.visible = true
-	else: 
-		gui.set_label.visible = false

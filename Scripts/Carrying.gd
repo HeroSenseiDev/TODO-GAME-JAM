@@ -2,6 +2,7 @@ extends StaticBody3D
 var player : Player
 @export var destino : Node3D
 @export var offset : Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -12,6 +13,7 @@ func _process(delta: float) -> void:
 	if not player.player_gfx.animation_finished and !player.is_carrying:
 		if player.can_take:
 			if Input.is_action_just_pressed("Take"):
+				set_collision_layer_value(4, true)
 				
 				# Calcular la rotación hacia el objeto
 				var direction_to_object = (global_transform.origin).normalized()

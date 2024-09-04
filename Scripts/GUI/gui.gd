@@ -1,7 +1,5 @@
 extends Control
 class_name GUI
-@onready var set_label: MarginContainer = $E2Set
-@onready var label: Label = $E2Set/Label
 
 @onready var interact_label: MarginContainer = $E2Interact
 

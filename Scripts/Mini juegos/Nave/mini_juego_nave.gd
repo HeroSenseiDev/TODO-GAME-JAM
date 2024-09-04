@@ -32,7 +32,6 @@ func Set_Win(delta):
 	if Real_Time >= Limit_Time:
 		In_Game = false
 		Win_Dead = "WIN"
-		Real_Time = 0
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,7 +57,6 @@ func Run(delta):
 	if nave_player.Nave_Player_Dead:
 		In_Game = false
 		Win_Dead = "DEAD"
-		Real_Time = 0
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		# Que se Prenda algo Algun lugar en Fuego.
 		
