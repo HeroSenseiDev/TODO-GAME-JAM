@@ -6,7 +6,8 @@ extends Node3D
 
 var Win_Game:bool
 var Is_Open:bool = true
-
+func _ready() -> void:
+	Close()
 func Open():
 	var tween = create_tween()
 	tween.tween_property(animation_tree, "parameters/Close_Open/blend_amount", 1,Speed_to_Open_or_Close)
