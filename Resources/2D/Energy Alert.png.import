@@ -3,26 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q4mfyvddm6x7"
-path.s3tc="res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.s3tc.ctex"
+path="res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Resources/2D/Energy Alert.png"
-dest_files=["res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.s3tc.ctex"]
+dest_files=["res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

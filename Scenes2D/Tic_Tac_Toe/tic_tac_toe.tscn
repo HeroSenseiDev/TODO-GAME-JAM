@@ -553,7 +553,6 @@ sharp_limit = 2.26
 visible = false
 position = Vector2(464, 232)
 rotation = 0.785398
-scale = Vector2(1, 1)
 points = PackedVector2Array(-237.588, 169.706, 418.607, 169.706)
 width = 59.165
 default_color = Color(0.487543, 0.553035, 0.506918, 1)
