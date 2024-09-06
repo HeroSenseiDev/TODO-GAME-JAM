@@ -19,7 +19,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_charged == true:
 		rayo.visible = true
-	
 	var overlapping_bodies : Array[Node3D] = carrying_detection.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body is Player:

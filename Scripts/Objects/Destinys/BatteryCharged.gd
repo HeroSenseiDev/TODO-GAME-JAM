@@ -12,9 +12,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if can_accept and Input.is_action_just_pressed("Take"):
-		carrying_detection.my_object.global_position = $PosicionBateria.global_position
-		player.is_carrying = false
-		alert.visible = false
+		if carrying_detection.my_object != null:
+			carrying_detection.my_object.queue_free()
+			player.is_carrying = false
+			alert.visible = false
 
 func battery_is_here():
 	if carrying_detection.my_object.is_charged == true:

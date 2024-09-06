@@ -29,5 +29,7 @@ func battery_is_not_here():
 
 func _on_charging_time_timeout() -> void:
 	GameManager.battery_is_charging = false
+	if object_detection.my_object == null:
+		return
 	if object_detection.my_object != null:
 		object_detection.my_object.is_charged = true

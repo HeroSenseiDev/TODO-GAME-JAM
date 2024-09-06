@@ -13,8 +13,9 @@ func _ready() -> void:
 	body_exited.connect(object_out)
 	
 func take_object(object):
-	if object.name == my_object.name:
-		MyObjectIsHere.emit()
+	if my_object != null:
+		if object.name == my_object.name:
+			MyObjectIsHere.emit()
 		
 func object_out(body):
 	if body is Player:
