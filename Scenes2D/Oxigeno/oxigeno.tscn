@@ -1,0 +1,325 @@
+[gd_scene load_steps=12 format=3 uid="uid://bub53i1rbfvn3"]
+
+[ext_resource type="Script" path="res://Scripts/Mini juegos/Oxigeno/oxigeno.gd" id="1_w464r"]
+
+[sub_resource type="Gradient" id="Gradient_hcd4p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hrdrw"]
+gradient = SubResource("Gradient_hcd4p")
+width = 8
+height = 8
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.995726, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyerl"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_q7o7f"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.53869, 1)
+colors = PackedColorArray(0.29696, 0.273626, 0.197815, 1, 0.439216, 0.407843, 0.305882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x463p"]
+gradient = SubResource("Gradient_q7o7f")
+fill = 2
+fill_from = Vector2(0, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_1v6f7"]
+offsets = PackedFloat32Array(0, 0.830357)
+colors = PackedColorArray(0.62972, 0.900663, 2.31028e-06, 1, 0.496268, 0.714406, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xdplh"]
+gradient = SubResource("Gradient_1v6f7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_lpcpc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.945402)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5t0sr"]
+gradient = SubResource("Gradient_lpcpc")
+width = 18
+height = 100
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xvv6q"]
+font_size = 50
+outline_color = Color(0.134832, 0.122035, 0.0815184, 1)
+shadow_size = 8
+shadow_color = Color(0.204248, 0.186889, 0.131922, 1)
+shadow_offset = Vector2(2.827, 3.67)
+
+[node name="Oxigeno" type="Node2D"]
+script = ExtResource("1_w464r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 820.0
+offset_bottom = 820.0
+color = Color(0.341446, 0.313432, 0.229823, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.220444, 0.200927, 0.142375, 1)
+texture_filter = 3
+offset_right = 820.0
+offset_bottom = 820.0
+texture = SubResource("GradientTexture2D_hrdrw")
+
+[node name="Marca_1" type="Marker2D" parent="."]
+position = Vector2(576, 160)
+
+[node name="Select" type="ColorRect" parent="Marca_1"]
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Marca_1"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.424525, 0.392185, 0.29516, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Marca_1"]
+position = Vector2(136, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_1/StaticBody2D"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marca_1/StaticBody2D"]
+shape = SubResource("RectangleShape2D_jyerl")
+
+[node name="Rot" type="Marker2D" parent="Marca_1"]
+rotation = -1.5708
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_1/Rot"]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 120.0
+offset_bottom = 16.0
+color = Color(0.570704, 0.532153, 0.416452, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_1/Rot"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.725069, 0.686751, 0.571468, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="Marca_1/Rot"]
+target_position = Vector2(120, 0)
+collision_mask = 2
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_1"]
+offset_left = 104.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = 24.0
+color = Color(0.72549, 0.686275, 0.572549, 1)
+
+[node name="Push" type="ColorRect" parent="Marca_1"]
+offset_left = 113.0
+offset_top = -16.0
+offset_right = 150.0
+offset_bottom = 16.0
+color = Color(0.588004, 0.844293, 0, 1)
+
+[node name="Marca_2" type="Marker2D" parent="."]
+position = Vector2(576, 400)
+metadata/_edit_group_ = true
+
+[node name="Select" type="ColorRect" parent="Marca_2"]
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Marca_2"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.424525, 0.392185, 0.29516, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Marca_2"]
+position = Vector2(136, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_2/StaticBody2D"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marca_2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_jyerl")
+
+[node name="Rot" type="Marker2D" parent="Marca_2"]
+rotation = -1.5708
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_2/Rot"]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 120.0
+offset_bottom = 16.0
+color = Color(0.570704, 0.532153, 0.416452, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_2/Rot"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.725069, 0.686751, 0.571468, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="Marca_2/Rot"]
+target_position = Vector2(120, 0)
+collision_mask = 2
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_2"]
+offset_left = 104.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = 24.0
+color = Color(0.72549, 0.686275, 0.572549, 1)
+
+[node name="Push" type="ColorRect" parent="Marca_2"]
+offset_left = 113.0
+offset_top = -16.0
+offset_right = 150.0
+offset_bottom = 16.0
+color = Color(0.588235, 0.843137, 0, 1)
+
+[node name="Marca_3" type="Marker2D" parent="."]
+position = Vector2(576, 640)
+
+[node name="Select" type="ColorRect" parent="Marca_3"]
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Marca_3"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.424525, 0.392185, 0.29516, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Marca_3"]
+position = Vector2(136, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_3/StaticBody2D"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.301723, 0.276781, 0.201955, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marca_3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_jyerl")
+
+[node name="Rot" type="Marker2D" parent="Marca_3"]
+rotation = -1.5708
+
+[node name="ColorRect3" type="ColorRect" parent="Marca_3/Rot"]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 120.0
+offset_bottom = 16.0
+color = Color(0.570704, 0.532153, 0.416452, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_3/Rot"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.725069, 0.686751, 0.571468, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="Marca_3/Rot"]
+target_position = Vector2(120, 0)
+collision_mask = 2
+
+[node name="ColorRect4" type="ColorRect" parent="Marca_3"]
+offset_left = 104.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = 24.0
+color = Color(0.72549, 0.686275, 0.572549, 1)
+
+[node name="Push" type="ColorRect" parent="Marca_3"]
+offset_left = 113.0
+offset_top = -16.0
+offset_right = 150.0
+offset_bottom = 16.0
+color = Color(0.588235, 0.843137, 0, 1)
+
+[node name="Casula" type="Node2D" parent="."]
+
+[node name="Edit" type="Node2D" parent="Casula"]
+position = Vector2(64, 768)
+scale = Vector2(10, 10.139)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Casula/Edit"]
+texture_filter = 3
+offset_right = 64.0
+offset_bottom = 64.0
+rotation = -1.5708
+scale = Vector2(1.085, 0.5)
+texture_under = SubResource("GradientTexture2D_x463p")
+texture_progress = SubResource("GradientTexture2D_xdplh")
+tint_over = Color(0, 0, 0, 1)
+
+[node name="Contenedor" type="TextureRect" parent="Casula"]
+modulate = Color(1, 1, 1, 0.389)
+texture_filter = 3
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 768.0
+texture = SubResource("GradientTexture2D_5t0sr")
+
+[node name="luz" type="ColorRect" parent="Casula"]
+offset_left = 280.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 256.0
+color = Color(1, 1, 1, 0.205)
+
+[node name="luz2" type="ColorRect" parent="Casula"]
+offset_left = 280.0
+offset_top = 280.0
+offset_right = 320.0
+offset_bottom = 320.0
+color = Color(1, 1, 1, 0.205)
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+offset_right = 820.0
+offset_bottom = 69.0
+text = "0/3"
+label_settings = SubResource("LabelSettings_xvv6q")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -7,6 +7,8 @@ const METRORITO = preload("res://Scenes2D/Nave/metrorito.tscn")
 @onready var area_inputs_meteoritos: Area2D = $Area_Inputs_meteoritos
 @onready var inputs_meteoritos: CollisionShape2D = $Area_Inputs_meteoritos/Inputs_meteoritos
 @onready var set_meteorito: Timer = $Area_Inputs_meteoritos/Set_meteorito
+@onready var redy: Timer = $Redy
+
 var set_meteorito_:bool = false
 
 var Ramdon = RandomNumberGenerator.new()
@@ -20,51 +22,50 @@ var Run_Game:bool
 var In_Game:bool
 var Win_Dead:String
 
+var is_ready:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	set_meteorito.autostart = true
-
-func Set_Win(delta):
 	
-	Real_Time += delta
+
+func Set_Win_Dead(delta):
+	
+	
 	label.text =  str(int(Real_Time)) + "/%s" % [Limit_Time]
 	if Real_Time >= Limit_Time:
 		In_Game = false
 		Win_Dead = "WIN"
-		Real_Time = 0
+		GlobalVar.Juegos_Terminado["Nave"] = true
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	
-	
-	if Run_Game:
-		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
-			In_Game = true
-		Run(delta)
-		
-
-func Run(delta):
-	
-	Set_Win(delta)
-
-	if set_meteorito_ == false:
-		set_meteorito.wait_time = (1 - (Real_Time*3* delta))
-	else:
-		Inputs_Meteoritos()
-	
 	if nave_player.Nave_Player_Dead:
 		In_Game = false
 		Win_Dead = "DEAD"
-		Real_Time = 0
+		GlobalVar.Relad_Game()
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		# Que se Prenda algo Algun lugar en Fuego.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	if Run_Game:
 		
+		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
+			In_Game = true
+		Run(delta)
+	else:
+		set_meteorito.start(1)
+
+func Run(delta):
+	
+	Set_Win_Dead(delta)
+
+	if not nave_player.Nave_Player_Dead:
+		Real_Time += delta
 	
 func Inputs_Meteoritos():
-	
+
 	var size = inputs_meteoritos.shape.get("size")
 	var Position = inputs_meteoritos.position
 	var Min_Position_X = Position.x - (size.x/2)
@@ -81,8 +82,14 @@ func Inputs_Meteoritos():
 		if I.Speed > 200:
 			I.Speed -= Real_Time * 50
 	
-	
-	set_meteorito_ = false
-	
+		
 func _on_set_meteorito_timeout() -> void:
-	set_meteorito_ = true
+	if Run_Game == false:
+		return
+	Inputs_Meteoritos()
+	if Real_Time > 15 :
+		set_meteorito.start(0.2)
+	elif Real_Time > 10 :
+		set_meteorito.start(0.3)
+	else:	
+		set_meteorito.start(0.6)

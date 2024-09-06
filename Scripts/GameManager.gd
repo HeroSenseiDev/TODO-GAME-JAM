@@ -3,20 +3,20 @@ extends Node
 
 var player : Player
 var gui : GUI
-
+signal BatteryCharging
+var battery_is_charging : bool
 func _ready() -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("Player")
 
 func _process(delta: float) -> void:
-	if not player:
+	if not player or not gui:
 		return
+
 	if player.can_take == true:
-		if gui:
-			gui.interact_label.visible = true
+		gui.interact_label.visible = true
 	else:
-		if gui:
-			gui.interact_label.visible = false
+		gui.interact_label.visible = false
 			
 	if player.can_set:
 		gui.set_label.visible = true

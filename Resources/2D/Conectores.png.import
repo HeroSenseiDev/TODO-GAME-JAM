@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q4mfyvddm6x7"
-path="res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.ctex"
+uid="uid://bulbnqe5n1lox"
+path="res://.godot/imported/Conectores.png-26ec5822bbd54d87d9bd5ae1d6f6cbec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/2D/Energy Alert.png"
-dest_files=["res://.godot/imported/Energy Alert.png-546d3feb49ac9d7af634b9617462fd81.ctex"]
+source_file="res://Resources/2D/Conectores.png"
+dest_files=["res://.godot/imported/Conectores.png-26ec5822bbd54d87d9bd5ae1d6f6cbec.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

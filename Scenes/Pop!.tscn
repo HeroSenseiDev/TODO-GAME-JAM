@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcssoe2vp1crt"]
+
+[ext_resource type="Texture2D" uid="uid://ls5k6h85fd0y" path="res://Resources/2D/Candado.png" id="1_53m0v"]
+[ext_resource type="Script" path="res://Scripts/pop!.gd" id="1_rw5h6"]
+
+[node name="Pop!" type="Node3D"]
+script = ExtResource("1_rw5h6")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 1, 0)
+modulate = Color(1, 1, 1, 0.957)
+billboard = 1
+no_depth_test = true
+texture_filter = 2
+texture = ExtResource("1_53m0v")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

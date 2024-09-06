@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddrq7qcbhnafu"]
+[gd_scene load_steps=10 format=3 uid="uid://ddrq7qcbhnafu"]
 
 [ext_resource type="Script" path="res://Scripts/Mini juegos/Nave/mini_juego_nave.gd" id="1_52rgk"]
 [ext_resource type="PackedScene" uid="uid://2falc2frptio" path="res://Scenes2D/Nave/nave_player.tscn" id="1_p27bm"]
@@ -39,10 +39,7 @@ size = Vector2(724, 31)
 [sub_resource type="LabelSettings" id="LabelSettings_t5nfs"]
 font_size = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_p12tt"]
-font_size = 200
-
-[node name="Mini Juego Nave" type="Node2D"]
+[node name="Mini Juego Nave" type="Node2D" groups=["Nave"]]
 position = Vector2(-1, 0)
 script = ExtResource("1_52rgk")
 
@@ -80,32 +77,18 @@ position = Vector2(402, -20)
 shape = SubResource("RectangleShape2D_16y2g")
 
 [node name="Set_meteorito" type="Timer" parent="Area_Inputs_meteoritos"]
-autostart = true
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 z_index = 2
 offset_right = 820.0
 offset_bottom = 69.0
-text = "Hola"
+text = "0/20"
 label_settings = SubResource("LabelSettings_t5nfs")
 horizontal_alignment = 1
 
-[node name="Win" type="Label" parent="."]
-visible = false
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 393.0
-offset_right = 820.0
-offset_bottom = 462.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(410, 136)
-size_flags_horizontal = 4
-text = "Win
-"
-label_settings = SubResource("LabelSettings_p12tt")
-horizontal_alignment = 1
+[node name="Redy" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="Area_Inputs_meteoritos/Set_meteorito" to="." method="_on_set_meteorito_timeout"]
+[connection signal="timeout" from="Redy" to="." method="_on_redy_timeout"]
