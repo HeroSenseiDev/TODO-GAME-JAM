@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://o7kscbaysa3x"]
+[gd_scene load_steps=11 format=3 uid="uid://o7kscbaysa3x"]
 
 [ext_resource type="Script" path="res://Scripts/Mini juegos/enter_mini_juego.gd" id="1_nv4tr"]
+[ext_resource type="Texture2D" uid="uid://ls5k6h85fd0y" path="res://Resources/2D/Candado.png" id="2_2ttyo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fthfi"]
 size = Vector3(1.72168, 1.43079, 2.21509)
@@ -273,6 +274,17 @@ no_depth_test = true
 render_priority = 2
 texture = SubResource("ViewportTexture_ouxyw")
 
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 3, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+no_depth_test = true
+texture_filter = 2
+render_priority = 1
+texture = ExtResource("2_2ttyo")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
 [node name="Take" type="SubViewport" parent="."]
 size = Vector2i(820, 820)
 
@@ -281,6 +293,9 @@ libraries = {
 "": SubResource("AnimationLibrary_a7whw")
 }
 
+[node name="Reload" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Player_enter" to="." method="_on_player_enter_area_entered"]
 [connection signal="area_exited" from="Player_enter" to="." method="_on_player_enter_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

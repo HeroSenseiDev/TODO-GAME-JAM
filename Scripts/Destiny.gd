@@ -1,22 +1,32 @@
-extends Area3D
-class_name Destiny
-
-signal MyObjectIsHere
-signal ObjectOut
-@export var my_object: Node3D
-@export var alert: Sprite3D
-
-var is_in_area: bool = false  # Variable para verificar si el jugador está en el área
-
+extends MeshInstance3D
+@export var objeto : Node3D
+@export var alert : Sprite3D
+var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_exited.connect(object_out)
-	
-func take_object(object):
-	if my_object != null:
-		if object.name == my_object.name:
-			MyObjectIsHere.emit()
-		
-func object_out(body):
-	if body is Player:
-		ObjectOut.emit()
+	player = get_tree().get_first_node_in_group("Player")
+	alert.visible = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if player.can_set and player.is_carrying:
+		if not player.player_gfx.animation_finished:
+			if Input.is_action_just_pressed("Take"):
+				player.player_gfx.animation_finished = true
+				player.player_gfx.Set_Animation_Take("SET", 2, 2)
+				objeto.queue_free()
+				alert.visible = false
+				player.is_carrying = false
+
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	print(area.get_parent().name)
+	if area.get_parent().name == objeto.name:
+		player.can_set = true
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area.get_parent().name == objeto.name:
+		player.can_set = false

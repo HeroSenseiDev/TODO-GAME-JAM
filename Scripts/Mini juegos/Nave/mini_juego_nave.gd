@@ -32,12 +32,11 @@ func Set_Win(delta):
 	if Real_Time >= Limit_Time:
 		In_Game = false
 		Win_Dead = "WIN"
+		GlobalVar.Juegos_Terminado["Nave"] = true
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	
 	
 	if Run_Game:
 		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
@@ -50,17 +49,17 @@ func Run(delta):
 	Set_Win(delta)
 
 	if set_meteorito_ == false:
-		set_meteorito.wait_time = (1 - (Real_Time*3* delta))
+		set_meteorito.wait_time = (1 - (Real_Time*2.3* delta))
 	else:
 		Inputs_Meteoritos()
 	
 	if nave_player.Nave_Player_Dead:
 		In_Game = false
 		Win_Dead = "DEAD"
+		GlobalVar.Relad_Game()
 		# Aqui se Puede llamar Una Animacino Para que el Sprite se desaparesca. 
 		# Que se Prenda algo Algun lugar en Fuego.
 		
-	
 func Inputs_Meteoritos():
 	
 	var size = inputs_meteoritos.shape.get("size")

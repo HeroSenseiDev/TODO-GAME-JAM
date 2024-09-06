@@ -8,7 +8,7 @@ var can_take : bool
 
 #Enter Mini Juego
 var Enter_Mini_Juego:bool
-var is_in_area : bool
+
 #Animation Nodes
 @onready var player_gfx: Node3D = $PlayerGFX
 var is_carrying : bool
@@ -18,10 +18,6 @@ var can_set : bool
 
 func _ready() -> void:
 	GameManager.player = self
-	
-func _process(delta: float) -> void:
-	if not is_carrying:
-		can_set = false
 func _physics_process(delta: float) -> void:
 	
 	if is_carrying: 
