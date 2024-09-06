@@ -19,18 +19,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_charged == true:
 		rayo.visible = true
-	if player.is_in_area:
-		if GameManager.battery_is_charging == true:
-			player.can_take = false
-		elif GameManager.battery_is_charging == false and not player.is_carrying:
-			player.can_take = true
-		if player.can_take and Input.is_action_just_pressed("Take") and GameManager.battery_is_charging == false:
-			reparent(player.carrying_offset)
-			player.is_carrying = true
-			player.can_take = false
-			#global_position =player.carrying_offset.global_position + offset
-			global_position = player.carrying_offset.global_position
-			global_rotation = player.carrying_offset.global_rotation
+	
+	var overlapping_bodies : Array[Node3D] = carrying_detection.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body is Player:
+			if GameManager.battery_is_charging == true:
+				player.can_take = false
+			elif GameManager.battery_is_charging == false and not player.is_carrying:
+				player.can_take = true
+			if player.can_take and Input.is_action_just_pressed("Take") and GameManager.battery_is_charging == false:
+				reparent(player.carrying_offset)
+				player.is_carrying = true
+				player.can_take = false
+				global_position = player.carrying_offset.global_position
+				global_rotation = player.carrying_offset.global_rotation
 		
 func player_is_in_area():
 		player.is_in_area = true

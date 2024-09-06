@@ -14,13 +14,15 @@ func _ready() -> void:
 	carrying_detection.NotCanCarrying.connect(player_is_not_in_area)
 	
 func _process(delta: float) -> void:
-	if player.is_in_area:
-		if player.can_take and Input.is_action_just_pressed("Take"):
-			reparent(player.carrying_offset)
-			player.is_carrying = true
-			global_position =player.carrying_offset.global_position + offset
-			global_rotation = player.carrying_offset.global_rotation
-			player.can_take = false
+	var overlapping_bodies : Array[Node3D] = carrying_detection.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body is Player:
+			if player.can_take and Input.is_action_just_pressed("Take"):
+				reparent(player.carrying_offset)
+				player.is_carrying = true
+				global_position = player.carrying_offset.global_position + offset
+				global_rotation = player.carrying_offset.global_rotation
+				player.can_take = false
 		
 func player_is_in_area():
 		player.is_in_area = true
