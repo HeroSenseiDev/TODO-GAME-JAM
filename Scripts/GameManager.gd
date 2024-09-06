@@ -3,8 +3,7 @@ extends Node
 
 var player : Player
 var gui : GUI
-signal BatteryCharging
-var battery_is_charging : bool
+
 func _ready() -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("Player")

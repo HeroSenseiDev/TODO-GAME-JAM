@@ -1,12 +1,18 @@
 extends Node3D
 
-
+@onready var sprite_3d: Sprite3D = $Sprite3D
 @export var Mini_Juego: PackedScene
+
+
 var Mini_Juego_node
 @onready var take: SubViewport = $Take
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var take_mini_juego: Node3D = $ConedorSpriter/Scale_Sprite
 @onready var take_mini_juego_2: Sprite3D = $ConedorSpriter/Scale_Sprite/Take_Mini_Juego2
+
+@onready var reload: Timer = $Reload
+@export var reload_time = 10
+var time_out:bool = true
 
 var player
 var Player_Enter:bool
@@ -30,6 +36,8 @@ func Set_Game():
 		var i = Mini_Juego.instantiate()
 		take.add_child(i)
 		Mini_Juego_node = i
+	
+
 
 func _process(delta: float) -> void:
 	Enter_Mini_Juego()
@@ -38,18 +46,28 @@ func _process(delta: float) -> void:
 func Enter_Mini_Juego():
 	if not Mini_Juego_node:
 		return
-	
+
+
 	if Player_Enter and not Mini_Juego_node.In_Game:
-		if Input.is_action_just_pressed("Take"):
+		if time_out == true and Input.is_action_just_pressed("Take"):
 			Mini_Juego_node.Run_Game = true
 			player.state_machine.change_to("PlayerGameState")
 			animation_player.play("enter")
 			Edit_Camara(true)
+			time_out = false
+			
 			
 	if Mini_Juego_node.Win_Dead == "WIN" or Mini_Juego_node.Win_Dead == "DEAD":
-		if not Mini_Juego_node.In_Game:
+		if Mini_Juego_node.In_Game == false:
 			animation_player.play("close")
-			
+			time_out = false
+
+			if Mini_Juego_node.Win_Dead == "DEAD":
+				
+				reload.start(reload_time)
+				create_tween().tween_property(sprite_3d, "modulate", Color(1,1,1,1), 0.5)
+				
+
 
 func Edit_Camara(Enter:bool):
 	if not camara:
@@ -64,13 +82,14 @@ func Edit_Camara(Enter:bool):
 		camara.Speed_To_Animation(0)
 		
 	else:
-		self.global_position = save_positon
+		create_tween().tween_property(self, "global_position", save_positon, 0.2)
 		camara.use_Player_position = true
 		camara.Speed_To_Animation(1)
 
 	
 func _on_player_enter_area_entered(area: Area3D) -> void:
-	Player_Enter = true
+	if area in get_tree().get_nodes_in_group("Player"):
+		Player_Enter = true
 
 
 func _on_player_enter_area_exited(area: Area3D) -> void:
@@ -85,3 +104,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			return
 		Mini_Juego_node.queue_free()
 		Set_Game()
+
+
+func _on_reload_timeout() -> void:
+	time_out = true
+	create_tween().tween_property(sprite_3d, "modulate", Color(1,1,1,0), 0.2)

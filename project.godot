@@ -22,15 +22,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/GameManager.gd"
+GlobalVar="*res://Scripts/Global_Var.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-
-[dotnet]
-
-project/assembly_name="GAMEJAM"
 
 [global_group]
 
@@ -70,7 +67,9 @@ Take={
 [layer_names]
 
 3d_physics/layer_1="Player"
+2d_physics/layer_2="Set_oxigeno"
 3d_physics/layer_2="World"
+2d_physics/layer_3="Conect_Reactor "
 3d_physics/layer_3="Obstacles"
 
 [rendering]

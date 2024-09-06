@@ -1,0 +1,171 @@
+[gd_scene load_steps=14 format=3 uid="uid://chvrfmn7thi66"]
+
+[ext_resource type="Script" path="res://Scripts/Mini juegos/Reactor/reactor.gd" id="1_by0e0"]
+[ext_resource type="Texture2D" uid="uid://cb3y66h3k1ko3" path="res://Scenes2D/Reactor/Sprite/Conectores.png" id="1_g168q"]
+
+[sub_resource type="Gradient" id="Gradient_n3l6k"]
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jk32w"]
+gradient = SubResource("Gradient_n3l6k")
+width = 8
+height = 8
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_e283v"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.729167)
+colors = PackedColorArray(0.690196, 0.690196, 0.690196, 1, 0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uttex"]
+gradient = SubResource("Gradient_e283v")
+width = 80
+height = 80
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_466d2"]
+size = Vector2(37, 36)
+
+[sub_resource type="Gradient" id="Gradient_3nhnb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.46, 0.46, 0.46, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tdcre"]
+gradient = SubResource("Gradient_3nhnb")
+width = 100
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_w4uhj"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.82103, 0.755392, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bwe6r"]
+gradient = SubResource("Gradient_w4uhj")
+width = 100
+height = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdb1"]
+size = Vector2(50.5, 56)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxp8i"]
+font_size = 50
+outline_color = Color(0.134832, 0.122035, 0.0815184, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2.827, 3.67)
+
+[node name="Reactor" type="Node2D"]
+script = ExtResource("1_by0e0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 820.0
+offset_bottom = 820.0
+color = Color(0.172833, 0.172833, 0.172833, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.223103, 0.223103, 0.223103, 1)
+texture_filter = 3
+offset_right = 820.0
+offset_bottom = 820.0
+texture = SubResource("GradientTexture2D_jk32w")
+metadata/_edit_use_anchors_ = true
+
+[node name="Input" type="Node2D" parent="."]
+
+[node name="Edit_Position" type="Node2D" parent="Input"]
+position = Vector2(120, 0)
+
+[node name="Line2D" type="Line2D" parent="Input/Edit_Position"]
+texture_filter = 3
+position = Vector2(-58, 0)
+points = PackedVector2Array(-800, 0, 80, 0)
+width = 80.575
+texture = SubResource("GradientTexture2D_uttex")
+texture_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Input/Edit_Position"]
+texture_filter = 3
+position = Vector2(-20, 2.84217e-13)
+scale = Vector2(10, 10)
+texture = ExtResource("1_g168q")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Enter" type="Area2D" parent="Input/Edit_Position"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Input/Edit_Position/Enter"]
+position = Vector2(45.5, 0)
+shape = SubResource("RectangleShape2D_466d2")
+disabled = true
+
+[node name="Progress" type="TextureProgressBar" parent="Input/Edit_Position"]
+offset_left = -100.0
+offset_top = 81.0
+offset_bottom = 101.0
+value = 50.0
+texture_under = SubResource("GradientTexture2D_tdcre")
+texture_progress = SubResource("GradientTexture2D_bwe6r")
+
+[node name="Live" type="Timer" parent="Input/Edit_Position"]
+
+[node name="Output" type="Node2D" parent="."]
+
+[node name="Edit_Position" type="Node2D" parent="Output"]
+position = Vector2(500, 80)
+rotation = 3.14159
+
+[node name="Line2D" type="Line2D" parent="Output/Edit_Position"]
+texture_filter = 3
+position = Vector2(-80, 0)
+points = PackedVector2Array(-1000, 0, 80, 0)
+width = 82.72
+texture = SubResource("GradientTexture2D_uttex")
+texture_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Output/Edit_Position"]
+texture_filter = 3
+position = Vector2(-80, -9.09495e-13)
+rotation = -3.14159
+scale = Vector2(10, 10)
+texture = ExtResource("1_g168q")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Conect" type="Area2D" parent="Output/Edit_Position"]
+position = Vector2(-80, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Output/Edit_Position/Conect"]
+position = Vector2(61.25, -7.62939e-06)
+shape = SubResource("RectangleShape2D_nfdb1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Output/Edit_Position"]
+position = Vector2(-66.9998, 0.000749469)
+scale = Vector2(6.79563, 7.17361)
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+offset_right = 820.0
+offset_bottom = 69.0
+text = "0/3"
+label_settings = SubResource("LabelSettings_fxp8i")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Set_Position" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Input/Edit_Position/Enter" to="." method="_on_enter_area_entered"]
+[connection signal="timeout" from="Input/Edit_Position/Live" to="." method="_on_live_timeout"]
+[connection signal="timeout" from="Set_Position" to="." method="_on_set_position_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
