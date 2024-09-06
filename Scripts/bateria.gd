@@ -28,7 +28,8 @@ func _process(delta: float) -> void:
 			reparent(player.carrying_offset)
 			player.is_carrying = true
 			player.can_take = false
-			global_position =player.carrying_offset.global_position + offset
+			#global_position =player.carrying_offset.global_position + offset
+			global_position = player.carrying_offset.global_position
 			global_rotation = player.carrying_offset.global_rotation
 		
 func player_is_in_area():

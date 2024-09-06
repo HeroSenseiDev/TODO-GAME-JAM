@@ -55,13 +55,12 @@ size = Vector3(1, 0.834961, 1)
 size = Vector3(0.825, 1.19, 2.365)
 
 [node name="Bateria" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403891, 0, 0)
 collision_layer = 8
 script = ExtResource("1_os3x6")
 offset = Vector3(-0.5, 0, 0)
 
 [node name="Plane_032" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.429221, 0, 0)
 material_override = ExtResource("2_twsbt")
 mesh = SubResource("ArrayMesh_knfls")
 skeleton = NodePath("")
@@ -73,11 +72,11 @@ billboard = 1
 texture = ExtResource("3_v0ev2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431684, 0.0825195, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00246337, 0.0825195, 0)
 shape = SubResource("BoxShape3D_d3448")
 
 [node name="CarryingDetection" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4199, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00932062, 0, 0)
 collision_layer = 10
 collision_mask = 9
 script = ExtResource("4_da8pr")
