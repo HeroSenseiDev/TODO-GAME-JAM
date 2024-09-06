@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctdg0il4uy3u1"]
+
+[ext_resource type="Texture2D" uid="uid://dph8x57a6sl2h" path="res://Scenes2D/Nave/Spriter/Meteorito.png" id="1_brpfr"]
+[ext_resource type="Script" path="res://Scripts/Mini juegos/Nave/metrorito.gd" id="1_dx1ij"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ka2l1"]
+radius = 26.0768
+
+[node name="Metiorito" type="Node2D"]
+script = ExtResource("1_dx1ij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(8, 8)
+texture = ExtResource("1_brpfr")
+
+[node name="Kill My" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill My"]
+shape = SubResource("CircleShape2D_ka2l1")
