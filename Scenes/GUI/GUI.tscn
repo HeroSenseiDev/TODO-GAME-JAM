@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GUI/gui.gd" id="1_sibb5"]
 [ext_resource type="Script" path="res://Scenes/GUI/BatteryBar.gd" id="2_pjv6c"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_nq2gp"]
-font_size = 20
+[ext_resource type="Texture2D" uid="uid://cs24htf8lheog" path="res://Resources/2D/E.png" id="2_vkpfb"]
 
 [sub_resource type="Gradient" id="Gradient_di0ws"]
 colors = PackedColorArray(0.0415072, 0.0415072, 0.0415072, 1, 0.0431373, 0.0431373, 0.0431373, 1)
@@ -40,46 +38,41 @@ health_bar = NodePath("MarginContainer/BatteryBar")
 
 [node name="E2Set" type="MarginContainer" parent="."]
 visible = false
-layout_mode = 2
-anchor_left = 0.5
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -208.0
-offset_right = 83.0
-offset_bottom = -180.0
-grow_horizontal = 2
+offset_left = 43.0
+offset_top = -137.0
+offset_right = 133.0
+offset_bottom = -47.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="E2Set"]
+[node name="TextureRect" type="TextureRect" parent="E2Set"]
+texture_filter = 1
 layout_mode = 2
-text = "[E] PARA DEJAR"
-label_settings = SubResource("LabelSettings_nq2gp")
+texture = ExtResource("2_vkpfb")
 
 [node name="E2Interact" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = -118.0
-offset_right = 81.0
-offset_bottom = -90.0
-grow_horizontal = 2
+offset_left = 43.0
+offset_top = -137.0
+offset_right = 133.0
+offset_bottom = -47.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="E2Interact"]
+[node name="TextureRect" type="TextureRect" parent="E2Interact"]
+texture_filter = 1
 layout_mode = 2
-text = "[E] PARA TOMAR"
-label_settings = SubResource("LabelSettings_nq2gp")
+texture = ExtResource("2_vkpfb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

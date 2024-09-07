@@ -54,11 +54,14 @@ func Enter_Mini_Juego():
 	var game_exemption = GlobalVar.Tarea_Terminada.has(type) and GlobalVar.Tarea_Terminada[type]
 	var game_type = GlobalVar.Juegos_Terminado.has(game) and GlobalVar.Juegos_Terminado[game]
 	
-	if Player_Enter and not Mini_Juego_node.In_Game:
+	if Player_Enter and not Mini_Juego_node.In_Game and time_out and not player.is_carrying :
+		if not time_out:
+			player.can_set = false
+		if exeption and not game_exemption:
+				return  # Si se necesita una excepción y no está cumplida, no se ejecuta el minijuego
+		player.can_set = true
 		if time_out == true and Input.is_action_just_pressed("Take") and not player.is_carrying:
 			# Si se debe verificar una excepción, comprueba antes de ejecutar el minijuego
-			if exeption and not game_exemption:
-				return  # Si se necesita una excepción y no está cumplida, no se ejecuta el minijuego
 			if game_type == true:
 				return
 			Mini_Juego_node.Run_Game = true
@@ -71,6 +74,7 @@ func Enter_Mini_Juego():
 	if Mini_Juego_node.Win_Dead == "WIN" or Mini_Juego_node.Win_Dead == "DEAD":
 		if Mini_Juego_node.In_Game == false:
 			animation_player.play("close")
+			player.can_set = false
 			time_out = false
 
 			if Mini_Juego_node.Win_Dead == "DEAD":
