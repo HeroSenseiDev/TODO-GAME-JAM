@@ -141,7 +141,7 @@ fadeout_time = 0.2
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_h4dvx"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cuwp8"]
-graph_offset = Vector2(-512.348, 202.217)
+graph_offset = Vector2(-509.299, 68.5207)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_60ugt")
 nodes/Animation/position = Vector2(-380, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1hqj2")
@@ -176,4 +176,4 @@ parameters/Fuerza/scale = 2.0
 parameters/Golpe/active = false
 parameters/Golpe/internal_active = false
 parameters/Golpe/request = 0
-parameters/Speed/scale = 1.0
+parameters/Speed/scale = 5.0

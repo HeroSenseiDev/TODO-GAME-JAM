@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://c7spk8gku5cov"]
+[gd_scene load_steps=173 format=4 uid="uid://c7spk8gku5cov"]
 
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_5euto"]
 [ext_resource type="PackedScene" uid="uid://4w182mkeoav1" path="res://Scenes/player.tscn" id="2_ujtjy"]
@@ -17,8 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://chvrfmn7thi66" path="res://Scenes2D/Reactor/reactor.tscn" id="14_sw0hs"]
 [ext_resource type="PackedScene" uid="uid://bub53i1rbfvn3" path="res://Scenes2D/Oxigeno/oxigeno.tscn" id="15_c8p5n"]
 [ext_resource type="PackedScene" uid="uid://dc7mfggmwuy4n" path="res://Scenes/Objects/bateria.tscn" id="15_hj6p7"]
-[ext_resource type="PackedScene" uid="uid://dc5e7fk32wdng" path="res://Scenes/Objects/Trash.tscn" id="16_kafu4"]
-[ext_resource type="PackedScene" uid="uid://cs6soga028c1v" path="res://Scenes2D/Tic_Tac_Toe/tic_tac_toe.tscn" id="16_wj64b"]
+[ext_resource type="PackedScene" uid="uid://dc5e7fk32wdng" path="res://Scenes/Objects/Trashs/Trash1.tscn" id="16_kafu4"]
+[ext_resource type="PackedScene" uid="uid://fpqm8nhc1kjq" path="res://Scenes/Objects/Trashs/Trash2.tscn" id="19_6cfly"]
+[ext_resource type="PackedScene" uid="uid://ckut0liclhg1v" path="res://Scenes/Objects/Trashs/Trash3.tscn" id="20_ult3g"]
+[ext_resource type="Script" path="res://Scripts/Objects/Destinys/Trash/dest.gd" id="21_onn6t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg0b5"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1093,7 +1095,44 @@ shadow_mesh = SubResource("ArrayMesh_f6uir")
 radius = 1.833
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cw7gy"]
-radius = 3.167
+radius = 1.29284
+
+[sub_resource type="Animation" id="Animation_6t4qn"]
+resource_name = "Charging"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.1, 6.26667, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_g1snx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04raq"]
+_data = {
+"Charging": SubResource("Animation_6t4qn"),
+"RESET": SubResource("Animation_g1snx")
+}
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yjgio"]
 _surfaces = [{
@@ -2314,9 +2353,10 @@ transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.127405
 shape = SubResource("SphereShape3D_82xsr")
 
 [node name="ChargingTime" type="Timer" parent="Base/Nave/Mesh/CargaBateria"]
+wait_time = 10.0
 
 [node name="PosicionBateriaCargada" type="Node3D" parent="Base/Nave/Mesh/CargaBateria"]
-transform = Transform3D(-4.37114e-08, -1, 9.9476e-14, 1, -4.37114e-08, 0, 2.75286e-21, 9.9476e-14, 1, 1.34777, 0.746279, -0.228817)
+transform = Transform3D(-4.37114e-08, -1, 1.10134e-13, 1, -4.37114e-08, 0, 3.17637e-21, 1.10134e-13, 1, 1.14334, 0.746279, -0.00608599)
 
 [node name="ObjectDetection" type="Area3D" parent="Base/Nave/Mesh/CargaBateria" node_paths=PackedStringArray("my_object")]
 script = ExtResource("7_nlikw")
@@ -2325,6 +2365,19 @@ my_object = NodePath("../../../../../Bateria")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Nave/Mesh/CargaBateria/ObjectDetection"]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 1.0005, 0.697516, 0)
 shape = SubResource("SphereShape3D_cw7gy")
+
+[node name="Sprite3D" type="Sprite3D" parent="Base/Nave/Mesh/CargaBateria"]
+transform = Transform3D(8, 0, 2.27374e-13, 0, 8, 0, -2.27374e-13, 0, 8, 1.87739, 1.62868, -1.1073)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("8_11jxi")
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Base/Nave/Mesh/CargaBateria/Sprite3D"]
+libraries = {
+"": SubResource("AnimationLibrary_04raq")
+}
 
 [node name="Cube_045" type="MeshInstance3D" parent="Base/Nave/Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53655, 0.691162, 1.7944)
@@ -2756,21 +2809,25 @@ draw_pass_1 = SubResource("PlaneMesh_50ima")
 [node name="Enter_Mini_Juego" parent="Base/Minijuegos" instance=ExtResource("9_bhe2o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.60326e-07, 0, 10.531)
 Mini_Juego = ExtResource("10_w2tqy")
+type = "Nave"
 Use_reload = true
 
 [node name="Enter_Mini_Juego2" parent="Base/Minijuegos" instance=ExtResource("9_bhe2o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.254112, 0, -10.3023)
 Mini_Juego = ExtResource("14_sw0hs")
+exeption = true
+type = "BateriaCargada"
+game = "Reactor"
 Use_reload = true
 
 [node name="Enter_Mini_Juego3" parent="Base/Minijuegos" instance=ExtResource("9_bhe2o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.1726, 0, -6.13566)
 Mini_Juego = ExtResource("15_c8p5n")
+game = "Oxigeno"
 Use_reload = true
 
 [node name="Enter_Mini_Juego4" parent="Base/Minijuegos" instance=ExtResource("9_bhe2o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.3274, 0, -7.80233)
-Mini_Juego = ExtResource("16_wj64b")
 Use_reload = true
 
 [node name="Control" parent="." instance=ExtResource("10_vmwab")]
@@ -2778,8 +2835,63 @@ Use_reload = true
 [node name="Bateria" parent="." instance=ExtResource("15_hj6p7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00145, 0.323095, -3.01753)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("16_kafu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9008, 0, 2.53342)
+[node name="Basuras" type="Node3D" parent="."]
+
+[node name="Objetos" type="Node3D" parent="Basuras"]
+
+[node name="Trash1" parent="Basuras/Objetos" instance=ExtResource("16_kafu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31535, 0, -2.29501)
+
+[node name="Trash2" parent="Basuras/Objetos" instance=ExtResource("19_6cfly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42357, 0, -1.8618)
+
+[node name="Trash3" parent="Basuras/Objetos" instance=ExtResource("20_ult3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3131, 0, -1.94642)
+
+[node name="Trash5" parent="Basuras/Objetos" instance=ExtResource("20_ult3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2663, 0, 7.68573)
+
+[node name="Trash6" parent="Basuras/Objetos" instance=ExtResource("19_6cfly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45991, 0, 8.24465)
+
+[node name="Trash7" parent="Basuras/Objetos" instance=ExtResource("20_ult3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82368, 0, -3.92515)
+
+[node name="Trash8" parent="Basuras/Objetos" instance=ExtResource("20_ult3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87913, 0, -3.92515)
+
+[node name="Trash9" parent="Basuras/Objetos" instance=ExtResource("20_ult3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38014, 0, -3.10818)
+
+[node name="Destinos" type="Node3D" parent="Basuras"]
+
+[node name="Dest1" type="StaticBody3D" parent="Basuras/Destinos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72906, 0.360563, -7.84617)
+script = ExtResource("21_onn6t")
+
+[node name="ObjectDetection" type="Area3D" parent="Basuras/Destinos/Dest1" node_paths=PackedStringArray("my_object")]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("7_nlikw")
+my_object = NodePath("../../../Objetos/Trash1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Basuras/Destinos/Dest1/ObjectDetection"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 1.0005, 0.697516, 0)
+shape = SubResource("SphereShape3D_cw7gy")
+
+[node name="Dest2" type="StaticBody3D" parent="Basuras/Destinos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72906, 0.360563, -6.84617)
+script = ExtResource("21_onn6t")
+
+[node name="ObjectDetection" type="Area3D" parent="Basuras/Destinos/Dest2" node_paths=PackedStringArray("my_object")]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("7_nlikw")
+my_object = NodePath("../../../Objetos/Trash2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Basuras/Destinos/Dest2/ObjectDetection"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 1.0005, 0.697516, 0)
+shape = SubResource("SphereShape3D_cw7gy")
 
 [connection signal="area_entered" from="Base/Nave/Mesh/CargaBateria/Cargador/Area3D" to="Base/Nave/Mesh/CargaBateria/Cargador" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Base/Nave/Mesh/CargaBateria/Cargador/Area3D" to="Base/Nave/Mesh/CargaBateria/Cargador" method="_on_area_3d_area_exited"]

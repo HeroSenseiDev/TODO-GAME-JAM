@@ -1,17 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://dc5e7fk32wdng"]
+[gd_scene load_steps=8 format=4 uid="uid://ckut0liclhg1v"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/trash.gd" id="1_qtr5e"]
-[ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_fv4kk"]
-[ext_resource type="Script" path="res://Scripts/Carrying.gd" id="3_44a1e"]
+[ext_resource type="Script" path="res://Scripts/Objects/trash.gd" id="1_kncjb"]
+[ext_resource type="Script" path="res://Scripts/Carrying.gd" id="2_2b4u2"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ufms"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mmlp"]
-resource_name = "Material.004"
-cull_mode = 2
-albedo_texture = SubResource("CompressedTexture2D_5ufms")
-roughness = 0.95
-texture_filter = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3gbh"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_172wk"]
 _surfaces = [{
@@ -37,7 +30,7 @@ _surfaces = [{
 "index_count": 336,
 "index_data": PackedByteArray("KAADAAoAKAAiAAMAJwAHAA0AJwAjAAcAJgAFABAAJgAkAAUAJQABABMAJQAUAAEAFQAEAA8AFQASAAQAEAAdAAcAEAAeAB0AAQAgABMAAQAhACAAAwAaAAoAAwAbABoADQAbAAMADQAcABsACAASABUACAAAABIAAgAVAAwAAgAIABUADAAPAAYADAAVAA8ALQAJABYALQAsAAkAKwAWABEAKwAtABYAJAATAAUAJAAlABMALgARABcALgArABEAKgAXAA4AKgAuABcAIwAQAAcAIwAmABAALwAOABgALwAqAA4AKQAYAAsAKQAvABgAIgANAAMAIgAnAA0AMAALABkAMAApAAsALAAZAAkALAAwABkAFAAKAAEAFAAoAAoAHAAyABsAHAAzADIAIAA2AB8AIAA3ADYAGwAxABoAGwAyADEAHwA1AB4AHwA2ADUABwAcAA0ABwAdABwACgAhAAEACgAaACEAEwAfAAUAEwAgAB8ABQAeABAABQAfAB4ACQAoABQACQAZACgACwAnACIACwAYACcADgAmACMADgAXACYAEQAlACQAEQAWACUAFgAUACUAFgAJABQAFwAkACYAFwARACQAGAAjACcAGAAOACMAGQAiACgAGQALACIAAAAwACwAAAAIADAACAApADAACAACACkAAgAvACkAAgAMAC8ADAAqAC8ADAAGACoABgAuACoABgAPAC4ADwArAC4ADwAEACsABAAtACsABAASAC0AEgAsAC0AEgAAACwAOQA4ADEAOQA3ADgANQA3ADkANQA2ADcANAA5ADMANAA1ADkAMwAxADIAMwA5ADEAIQA3ACAAIQA4ADcAHQAzABwAHQA0ADMAHgA0AB0AHgA1ADQAGgA4ACEAGgAxADgA"),
 "lods": [0.34133, PackedByteArray("uQCmALMAqQC5ALMAsgC5AKkAuQC0AKYApgDFALMAswDFAMMAswDDAKkAwwDRAM4AqQDDAMIAwwDNAMIAHwDPAMUAxQDPAMQApgDGAMUAxgDSAM8AzwDSANQA1ADSAMYAtgDGAKYAtgA3AMYAtAC2AKYAoAA3ALYAtAC3ALYAtwCgALYAtwCqAKAApQC4ALQApQC1ALsAnwCrALgAnwDJAKsApACeALgApwCeAKQApwCkALoAoQCeAKcAngChAMkAoQCnAMgAoQDIALwAyACxALwAyQChAK0AyACoALAAqAC6ALAAogC9AK0AyQCtAL8AqgDJAL8AvwCtAKMAqgC/AKwAvwCjAKwAqgCsAKAArADHAKAAoADHANMA0ADTAMsArADAAMcAowDAAKwAwADVAMcAwADMANUAowDBAMAAwQDKAMAAzQDKAMEAzQA1AMoAwgDNAMEArwDBAKMArwDCAMEArgCvAKMAqQDCAK8ArgC+AK8AvgCpAK8AvgCxAKkA"), 0.903824, PackedByteArray("jAB+AIYAjACIAH4AgACIAI0AfgCWAIYAhgCWAJMAgQCMAIYAhgCTAIEAhACMAIEAfwCNAIQAgQCTAJIAgQCSAHwAlACbAJIAewB/AIUAfAAbADEAAQAxADcAfACZAHgAjwB8AHgAfwB2AIkAAgB2AH8AdgACAJEAiwA3AB8AeACdAIsAmACdAJoAiwCXAH4AlQCXAJwAhwCLAH4AhwB5AIsAhwCQAHkAdwCQAIoAegCDAI4AjgCDAIIAjgCCAH0A"), 0.95516, PackedByteArray("WABsAHMAZQBqAFgAXgBtAF0AXgBxAG0AaABeAF0AaABgAF4AWwBgAGgAaQBdAFkAXQBuAFkAXwBjAHAAYwB0AHAAWgB0AGMAYQBkAF8AXABmAGIAXABrAGcAcgB1AG8A"), 1.44544, PackedByteArray("TgBVAFIASwBOAFIARABTAFYASABMAEUARQBMAFQATwBGAFcASQBQAE0ASgBHAFEA"), 1.65092, PackedByteArray("PwBBADoAPAA/ADoAPQBCAEAAPgA7AEMA")],
-"material": SubResource("StandardMaterial3D_1mmlp"),
+"material": SubResource("StandardMaterial3D_w3gbh"),
 "name": "Material.004",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -52,13 +45,12 @@ shadow_mesh = SubResource("ArrayMesh_172wk")
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7jkv"]
 size = Vector3(0.825, 1.19, 2.365)
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="Trash3" type="StaticBody3D"]
 collision_layer = 8
-script = ExtResource("1_qtr5e")
+script = ExtResource("1_kncjb")
 
 [node name="Cube_047" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.249319, 0, 0, 0, 0.249319, 0, 0, 0, 0.249319, 0, 0, 0)
-material_override = ExtResource("2_fv4kk")
 mesh = SubResource("ArrayMesh_wv2uj")
 skeleton = NodePath("")
 
@@ -69,7 +61,7 @@ shape = SubResource("BoxShape3D_wh6e5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4199, 0, 0)
 collision_layer = 10
 collision_mask = 9
-script = ExtResource("3_44a1e")
+script = ExtResource("2_2b4u2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0.184567, 0)

@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 			carrying_detection.my_object.queue_free()
 			player.is_carrying = false
 			alert.visible = false
+			GlobalVar.Tarea_Terminada["BateriaCargada"] = true
+			print(GlobalVar.Tarea_Terminada["BateriaCargada"])
 
 func battery_is_here():
 	if carrying_detection.my_object.is_charged == true:

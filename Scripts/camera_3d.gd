@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 # Velosidad del la Animacion
 func Speed_To_Animation(Speed:float=1):
-	animation_tree["parameters/Speed/scale"] = Speed
+	animation_tree["parameters/Speed/scale"] = Speed 
 
 
 # Para Cuando Pasa Algo Muy Fuerte en la Scena
