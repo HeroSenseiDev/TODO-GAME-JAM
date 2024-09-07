@@ -123,6 +123,9 @@ extends Node2D
 
 @onready var ia_game: Timer = $IA_Game
 
+
+@export var Color_: Color
+
 var Ramdon = RandomNumberGenerator.new()
 
 var Direction = Vector2(1,1)
@@ -181,7 +184,7 @@ func Select_casilla():
 func draw_select_casilla(how_casilla:String):
 	for casilla in Cuadrillas.keys():
 		if casilla != how_casilla:
-			create_tween().tween_property(Cuadrillas[casilla]["Select"], "modulate", Color(0.288,0.337,0.302), 0.2)
+			create_tween().tween_property(Cuadrillas[casilla]["Select"], "modulate", Color_ , 0.2)
 	create_tween().tween_property(Cuadrillas[how_casilla]["Select"], "modulate", Color.WHITE, 0.2)
 	
 func Add_Object(how):
