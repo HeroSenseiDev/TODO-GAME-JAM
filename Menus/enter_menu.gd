@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 @onready var video: AnimatedSprite2D = $Video
 @onready var pressed: RichTextLabel = $Control/Pressed
@@ -16,7 +16,10 @@ func _process(delta: float) -> void:
 
 
 	if Input.is_action_just_pressed("Take"):
-		get_tree().change_scene_to_file(NAVE)
+		Transicion.Enter_Scena = "res://Scenes/G_Items/nave.tscn"
+		
+		Transicion.call_Enter()
+		
 func _move_video_to_mouse():
 
 	var mouse_position = get_viewport().get_mouse_position()
