@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cb3y66h3k1ko3"
-path="res://.godot/imported/Conectores.png-709b4ba28933af7d0aee87a37aeb7200.ctex"
+path="res://.godot/imported/Conectores.png-abda5458b44e8dbdb596fd1efbe435c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes2D/Reactor/Sprite/Conectores.png"
-dest_files=["res://.godot/imported/Conectores.png-709b4ba28933af7d0aee87a37aeb7200.ctex"]
+source_file="res://Reactor/Sprite/Conectores.png"
+dest_files=["res://.godot/imported/Conectores.png-abda5458b44e8dbdb596fd1efbe435c4.ctex"]
 
 [params]
 
