@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wm5ss721732q"
-path="res://.godot/imported/nave.png-ab57ebe591e6d29a79cfb060b40e69ee.ctex"
+path="res://.godot/imported/nave.png-d82a28b2d1a26c1c29c6c763b5a64d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes2D/Nave/Spriter/nave.png"
-dest_files=["res://.godot/imported/nave.png-ab57ebe591e6d29a79cfb060b40e69ee.ctex"]
+source_file="res://Nave/Spriter/nave.png"
+dest_files=["res://.godot/imported/nave.png-d82a28b2d1a26c1c29c6c763b5a64d22.ctex"]
 
 [params]
 

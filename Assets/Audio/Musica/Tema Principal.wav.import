@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdk076qk1odcn"
+path="res://.godot/imported/Tema Principal.wav-74673c61496c53fd543596d75cf91672.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Musica/Tema Principal.wav"
+dest_files=["res://.godot/imported/Tema Principal.wav-74673c61496c53fd543596d75cf91672.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

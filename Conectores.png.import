@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bulbnqe5n1lox"
-path="res://.godot/imported/Conectores.png-26ec5822bbd54d87d9bd5ae1d6f6cbec.ctex"
+uid="uid://ncy0ka2xefna"
+path="res://.godot/imported/Conectores.png-7825edf5eb15c8db5916984d3c16aa98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/2D/Conectores.png"
-dest_files=["res://.godot/imported/Conectores.png-26ec5822bbd54d87d9bd5ae1d6f6cbec.ctex"]
+source_file="res://Conectores.png"
+dest_files=["res://.godot/imported/Conectores.png-7825edf5eb15c8db5916984d3c16aa98.ctex"]
 
 [params]
 
