@@ -26,7 +26,8 @@ func _process(delta: float) -> void:
 		
 func player_is_in_area():
 		player.is_in_area = true
-		player.can_take = true
+		if not player.is_carrying:
+			player.can_take = true
 func player_is_not_in_area():
 	player.is_in_area = false
 	player.can_take = false

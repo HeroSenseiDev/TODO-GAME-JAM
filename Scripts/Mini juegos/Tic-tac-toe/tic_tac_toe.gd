@@ -122,7 +122,9 @@ extends Node2D
 
 
 @onready var ia_game: Timer = $IA_Game
-@onready var label: Label = $Label
+
+
+@export var Color_: Color
 
 var Ramdon = RandomNumberGenerator.new()
 
@@ -133,20 +135,28 @@ var Ia_Time:bool = false
 var turnos = 0
 var turnos_max = 3
 
-var Run_Game:bool
+var Empate = false
+var Run_Game:bool 
 var In_Game:bool
 var Win_Dead:String
 var Run_:bool 
+
+var timer_run:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
 
 func _process(delta: float) -> void:
-	#if Run_Game and Run_ and turnos < 4:
-	#	if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
-	#		In_Game = true
-	Run(delta)
+	
+	if timer_run <= 3:
+		timer_run += delta
+
+	if Run_Game and timer_run >= 3:
+		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
+			In_Game = true
+		Run(delta)
+
 	Kill_or_Win("Win")
 	Kill_or_Win("Dead")
 
@@ -174,7 +184,7 @@ func Select_casilla():
 func draw_select_casilla(how_casilla:String):
 	for casilla in Cuadrillas.keys():
 		if casilla != how_casilla:
-			create_tween().tween_property(Cuadrillas[casilla]["Select"], "modulate", Color(0.288,0.337,0.302), 0.2)
+			create_tween().tween_property(Cuadrillas[casilla]["Select"], "modulate", Color_ , 0.2)
 	create_tween().tween_property(Cuadrillas[how_casilla]["Select"], "modulate", Color.WHITE, 0.2)
 	
 func Add_Object(how):
@@ -213,8 +223,6 @@ func IA_set_Object():
 		else:
 			cual = Select_casilla_to_Ia()
 
-func label_():
-	label.text = str(turnos) + str("/") + str(turnos_max)
 
 func Add_Linea(how_linea:String):
 
@@ -224,15 +232,11 @@ func Add_Linea(how_linea:String):
 
 
 
-
-	
-
 func Run(delta):
 	var Casilla_Activa = Select_casilla()
 	draw_select_casilla(Casilla_Activa)
 	Player_set_Object(Casilla_Activa)
 	IA_set_Object()
-	label_()
 	#Reload_turno()
 	
 
@@ -251,52 +255,74 @@ func Reload_turno():
 
 func set_Lineas(how_casillas:Array, how_linea:String, object_tipe:String):
 
-	if (Cuadrillas[how_casillas[0]]["How"] == "" or not Cuadrillas[how_casillas[0]]["How"] == object_tipe and
-	Cuadrillas[how_casillas[1]]["How"] == "" or not Cuadrillas[how_casillas[1]]["How"] == Cuadrillas[how_casillas[0]]["How"] and
-	Cuadrillas[how_casillas[2]]["How"] == "" or not Cuadrillas[how_casillas[2]]["How"] == Cuadrillas[how_casillas[1]]["How"]):
-		
+	
+	# Esto mira si La linea es La Adecuada. 
+	if (
+	Cuadrillas[how_casillas[0]]["How"] == "" or not Cuadrillas[how_casillas[0]]["How"] == object_tipe or
+	Cuadrillas[how_casillas[1]]["How"] == "" or not Cuadrillas[how_casillas[1]]["How"] == object_tipe or
+	Cuadrillas[how_casillas[2]]["How"] == "" or not Cuadrillas[how_casillas[2]]["How"] == object_tipe or
+	not Cuadrillas[how_casillas[0]]["How"] == Cuadrillas[how_casillas[1]]["How"] or 
+	not Cuadrillas[how_casillas[1]]["How"] == Cuadrillas[how_casillas[2]]["How"]
+	):
+		Empate = false
 		return false
 
+	# Esto Dibuja Las Lineas.
 	Lineas[how_linea]["Node"].visible = true
 	Lineas[how_linea]["Node"].modulate = Color(1, 1, 1, 0)
 	create_tween().tween_property(Lineas[how_linea]["Node"], "modulate", Color.WHITE, 0.5)
+	Empate = true
 	return true
-
+	
 	
 func Kill_or_Win(how:String):
 
 	
-	
+	# Mira que Linea Va a dibujar
 	var type = "Circulo" if how == "Win" else "Rombo"
 
-	if set_Lineas(["Casilla_1", "Casilla_2", "Casilla_3"], "Vertical_UP", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_4", "Casilla_5", "Casilla_6"], "Vertical_MED", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_7", "Casilla_8", "Casilla_9"], "Vertical_DOWN", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_1", "Casilla_4", "Casilla_7"], "Horizontal_LEFT", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_2", "Casilla_5", "Casilla_6"], "Horizontal_MED", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_3", "Casilla_8", "Casilla_9"], "Horizontal_RIGHT", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_1", "Casilla_5", "Casilla_9"], "Diagonal_LEFT", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	if set_Lineas(["Casilla_3", "Casilla_5", "Casilla_7"], "Diagonal_RIGHT", type) == false:
-		Win_Dead = "WIN" if how == "Win" else "DEAD"
-		In_Game = false
-	
-	
-	
 
+	if set_Lineas(["Casilla_1", "Casilla_2", "Casilla_3"], "Vertical_UP", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_4", "Casilla_5", "Casilla_6"], "Vertical_MED", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_7", "Casilla_8", "Casilla_9"], "Vertical_DOWN", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_1", "Casilla_4", "Casilla_7"], "Horizontal_LEFT", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_2", "Casilla_5", "Casilla_8"], "Horizontal_MED", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_3", "Casilla_6", "Casilla_9"], "Horizontal_RIGHT", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_1", "Casilla_5", "Casilla_9"], "Diagonal_LEFT", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	if set_Lineas(["Casilla_3", "Casilla_5", "Casilla_7"], "Diagonal_RIGHT", type):
+		Win_Dead = "WIN" if how == "Win" else "DEAD"
+		In_Game = false
+		
+	for casilla in Cuadrillas.keys():
+		if not Cuadrillas[casilla]["How"] != "":
+			return
+
+	if Empate == false:
+		Win_Dead = "DEAD"
+		In_Game = false
+
+	
 
 func _on_ia_game_timeout() -> void:
 	Ia_Time = true
