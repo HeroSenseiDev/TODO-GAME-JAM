@@ -7,7 +7,6 @@ var cargaBateria
 var is_charging : bool = false
 var is_charged : bool = false
 @onready var carrying_detection: CarryingDetect = $CarryingDetection
-@onready var rayo: Sprite3D = $Rayo
 
 func _ready() -> void:
 	# Al iniciar, obtenemos las referencias de la batería y el jugador
@@ -17,6 +16,8 @@ func _ready() -> void:
 	carrying_detection.NotCanCarrying.connect(player_is_not_in_area)
 	
 func _process(delta: float) -> void:
+	if player.carrying_object != self:
+		set_collision_layer_value(1, true)
 	var overlapping_bodies : Array[Node3D] = carrying_detection.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body is Player:
@@ -28,6 +29,8 @@ func _process(delta: float) -> void:
 				reparent(player.carrying_offset)
 				player.is_carrying = true
 				player.can_take = false
+				player.carrying_object = self
+				set_collision_layer_value(1, false)
 				global_position = player.carrying_offset.global_position
 				global_rotation = player.carrying_offset.global_rotation
 		

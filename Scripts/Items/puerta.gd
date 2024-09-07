@@ -2,8 +2,11 @@ extends Node3D
 
 @onready var puerta_l: Marker3D = $Puerta_L
 @onready var puerta_r: Marker3D = $Puerta_R
-
+var is_in_area : bool
 @export var Speed_To_Open:float = 0.2
+func _process(delta: float) -> void:
+	if is_in_area:
+		Open()
 func Open():
 	var tween = create_tween()
 	tween.tween_property(puerta_l, "position", Vector3(0.75,0,0), Speed_To_Open)

@@ -15,7 +15,7 @@ var BasuraEnSala = {
 	"Trash1": false,
 	"Trash2": false,
 	"Trash3": false,
-	"Trash4": false,
+	#"Trash4": false,
 	"Trash5": false,
 	"Trash6": false,
 	"Trash7": false,

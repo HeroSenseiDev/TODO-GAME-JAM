@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 				object_detection.my_object.global_rotation = posicion_bateria_cargada.global_rotation
 				player.is_carrying = false
 				GameManager.battery_is_charging = true
+				$Sprite3D.visible = true
 				animation_player.play("Charging")
 				charging_time.start()
 
@@ -31,7 +32,7 @@ func battery_is_here():
 func battery_is_not_here():
 	player.can_set = false
 	if object_detection.my_object != null:
-		if object_detection.my_object.is_charged:
+		if object_detection.my_object.is_charged and player.carrying_object == object_detection.my_object:
 			$Sprite3D.visible = false
 
 

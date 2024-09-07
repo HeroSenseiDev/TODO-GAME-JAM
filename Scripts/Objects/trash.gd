@@ -1,10 +1,10 @@
 extends StaticBody3D
-
+class_name  Trash
 
 var player : Player
 @export var destino : Node3D
 @export var offset : Vector3
-
+var in_place : bool = false
 @onready var carrying_detection: CarryingDetect = $Detection
 
 func _ready() -> void:
@@ -17,16 +17,17 @@ func _process(delta: float) -> void:
 	var overlapping_bodies : Array[Node3D] = carrying_detection.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body is Player:
-			if player.can_take and Input.is_action_just_pressed("Take"):
+			if player.can_take and Input.is_action_just_pressed("Take") and not in_place:
 				reparent(player.carrying_offset)
 				player.is_carrying = true
 				global_position = player.carrying_offset.global_position + offset
 				global_rotation = player.carrying_offset.global_rotation
+				player.carrying_object = self
 				player.can_take = false
 		
 func player_is_in_area():
 		player.is_in_area = true
-		if not player.is_carrying:
+		if not player.is_carrying and not in_place:
 			player.can_take = true
 func player_is_not_in_area():
 	player.is_in_area = false

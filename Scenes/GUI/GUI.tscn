@@ -1,11 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0rflr1tx0iwi"]
+[gd_scene load_steps=9 format=3 uid="uid://c0rflr1tx0iwi"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/gui.gd" id="1_sibb5"]
+[ext_resource type="Script" path="res://Scenes/GUI/BatteryBar.gd" id="2_pjv6c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nq2gp"]
 font_size = 20
 
-[node name="GUI" type="Control"]
+[sub_resource type="Gradient" id="Gradient_di0ws"]
+colors = PackedColorArray(0.0415072, 0.0415072, 0.0415072, 1, 0.0431373, 0.0431373, 0.0431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sean6"]
+gradient = SubResource("Gradient_di0ws")
+width = 250
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_7hmpj"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uxsvs"]
+gradient = SubResource("Gradient_7hmpj")
+width = 250
+height = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_i778s"]
+font_size = 30
+font_color = Color(1, 0, 0, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GUI" type="Control" node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sibb5")
+health_bar = NodePath("MarginContainer/BatteryBar")
 
 [node name="E2Set" type="MarginContainer" parent="."]
 visible = false
@@ -56,3 +80,35 @@ size_flags_vertical = 4
 layout_mode = 2
 text = "[E] PARA TOMAR"
 label_settings = SubResource("LabelSettings_nq2gp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = 31.0
+offset_top = 23.0
+offset_right = 281.0
+offset_bottom = 43.0
+
+[node name="BatteryBar" type="TextureProgressBar" parent="MarginContainer"]
+layout_mode = 2
+texture_under = SubResource("GradientTexture2D_sean6")
+texture_progress = SubResource("GradientTexture2D_uxsvs")
+script = ExtResource("2_pjv6c")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 20.0
+offset_right = 83.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "1:30 PARA ATERRIZAR"
+label_settings = SubResource("LabelSettings_i778s")

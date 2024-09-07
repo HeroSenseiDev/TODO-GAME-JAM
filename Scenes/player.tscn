@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=56 format=4 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/call_Aniamtion.gd" id="5_b4v8d"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/PlayerGameState.gd" id="5_u1crw"]
 [ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="6_jqr47"]
+[ext_resource type="Script" path="res://Scripts/Player/Battery_Component.gd" id="8_16d4e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qqle"]
 height = 1.73349
@@ -11126,6 +11127,8 @@ albedo_color = Color(0, 0, 0, 1)
 radius = 0.821489
 height = 2.17213
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lvwyy"]
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("state_machine") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_3ccag")
@@ -11647,13 +11650,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16697, 0)
 shape = SubResource("CapsuleShape3D_68nmv")
 
 [node name="CarryingOffset" type="Node3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.15675, 1.03241)
 layers = 16384
 light_energy = 2.0
 light_cull_mask = 4293935104
+
+[node name="BatteryComponent" type="Area3D" parent="."]
+script = ExtResource("8_16d4e")
+max_health = 100
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BatteryComponent"]
+shape = SubResource("SphereShape3D_lvwyy")
 
 [connection signal="timeout" from="StateMachine/PlayerShockState/Timer" to="StateMachine/PlayerShockState" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PlayerShockState/KnockbackDuration" to="StateMachine/PlayerShockState" method="_on_knockback_duration_timeout"]

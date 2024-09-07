@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bub53i1rbfvn3"]
+[gd_scene load_steps=14 format=3 uid="uid://bub53i1rbfvn3"]
 
 [ext_resource type="Script" path="res://Scripts/Mini juegos/Oxigeno/oxigeno.gd" id="1_w464r"]
 
@@ -46,6 +46,18 @@ height = 100
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_uqjl6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.951149)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_46yxq"]
+gradient = SubResource("Gradient_uqjl6")
+width = 18
+height = 100
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_xvv6q"]
 font_size = 50
 outline_color = Color(0.134832, 0.122035, 0.0815184, 1)
@@ -70,6 +82,21 @@ texture = SubResource("GradientTexture2D_hrdrw")
 
 [node name="Marca_1" type="Marker2D" parent="."]
 position = Vector2(576, 160)
+
+[node name="ColorRect5" type="ColorRect" parent="Marca_1"]
+offset_left = 96.0
+offset_top = -40.0
+offset_right = 180.0
+offset_bottom = 44.0
+scale = Vector2(0.956, 0.956)
+color = Color(0, 0, 0, 1)
+
+[node name="Select2" type="ColorRect" parent="Marca_1"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
 
 [node name="Select" type="ColorRect" parent="Marca_1"]
 offset_left = -72.0
@@ -102,6 +129,22 @@ shape = SubResource("RectangleShape2D_jyerl")
 
 [node name="Rot" type="Marker2D" parent="Marca_1"]
 rotation = -1.5708
+
+[node name="ColorRect5" type="ColorRect" parent="Marca_1/Rot"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 18.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Marca_1/Rot"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 23.0
+offset_bottom = 23.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Marca_1/Rot"]
 offset_left = -8.0
@@ -139,6 +182,21 @@ color = Color(0.588004, 0.844293, 0, 1)
 position = Vector2(576, 400)
 metadata/_edit_group_ = true
 
+[node name="ColorRect5" type="ColorRect" parent="Marca_2"]
+offset_left = 96.0
+offset_top = -40.0
+offset_right = 180.0
+offset_bottom = 44.0
+scale = Vector2(0.956, 0.956)
+color = Color(0, 0, 0, 1)
+
+[node name="Select2" type="ColorRect" parent="Marca_2"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+
 [node name="Select" type="ColorRect" parent="Marca_2"]
 offset_left = -72.0
 offset_top = -72.0
@@ -170,6 +228,22 @@ shape = SubResource("RectangleShape2D_jyerl")
 
 [node name="Rot" type="Marker2D" parent="Marca_2"]
 rotation = -1.5708
+
+[node name="ColorRect5" type="ColorRect" parent="Marca_2/Rot"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 18.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Marca_2/Rot"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 23.0
+offset_bottom = 23.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Marca_2/Rot"]
 offset_left = -8.0
@@ -206,6 +280,21 @@ color = Color(0.588235, 0.843137, 0, 1)
 [node name="Marca_3" type="Marker2D" parent="."]
 position = Vector2(576, 640)
 
+[node name="ColorRect5" type="ColorRect" parent="Marca_3"]
+offset_left = 96.0
+offset_top = -40.0
+offset_right = 180.0
+offset_bottom = 44.0
+scale = Vector2(0.956, 0.956)
+color = Color(0, 0, 0, 1)
+
+[node name="Select2" type="ColorRect" parent="Marca_3"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+
 [node name="Select" type="ColorRect" parent="Marca_3"]
 offset_left = -72.0
 offset_top = -72.0
@@ -237,6 +326,22 @@ shape = SubResource("RectangleShape2D_jyerl")
 
 [node name="Rot" type="Marker2D" parent="Marca_3"]
 rotation = -1.5708
+
+[node name="ColorRect5" type="ColorRect" parent="Marca_3/Rot"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 18.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Marca_3/Rot"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 23.0
+offset_bottom = 23.0
+scale = Vector2(1.146, 1.146)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Marca_3/Rot"]
 offset_left = -8.0
@@ -290,10 +395,19 @@ tint_over = Color(0, 0, 0, 1)
 modulate = Color(1, 1, 1, 0.389)
 texture_filter = 3
 offset_left = 64.0
-offset_top = 64.0
+offset_top = 80.0
 offset_right = 384.0
-offset_bottom = 768.0
+offset_bottom = 744.0
 texture = SubResource("GradientTexture2D_5t0sr")
+
+[node name="Contenedor2" type="TextureRect" parent="Casula"]
+modulate = Color(0.0253638, 0.0253638, 0.0253638, 1)
+texture_filter = 3
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 400.0
+offset_bottom = 768.0
+texture = SubResource("GradientTexture2D_46yxq")
 
 [node name="luz" type="ColorRect" parent="Casula"]
 offset_left = 280.0
