@@ -1,0 +1,142 @@
+[gd_scene load_steps=20 format=3 uid="uid://bsqx2m168si5n"]
+
+[ext_resource type="Script" path="res://Menus/enter_menu.gd" id="1_282se"]
+[ext_resource type="Texture2D" uid="uid://bd3w20q685l3m" path="res://Menus/Enter_video/0001.jpg" id="1_vidna"]
+[ext_resource type="Texture2D" uid="uid://cwfj2mfoqgetk" path="res://Menus/Enter_video/0002.jpg" id="2_p7tyb"]
+[ext_resource type="Texture2D" uid="uid://cx0xv27n2by4a" path="res://Menus/Enter_video/0003.jpg" id="3_uk2p6"]
+[ext_resource type="Texture2D" uid="uid://wl7wc8awe0os" path="res://Menus/Enter_video/0004.jpg" id="4_hxlor"]
+[ext_resource type="Texture2D" uid="uid://b457ov5if7oym" path="res://Menus/Enter_video/0005.jpg" id="5_f7j7r"]
+[ext_resource type="Texture2D" uid="uid://b8m6l1y1v5d16" path="res://Menus/Enter_video/0006.jpg" id="6_evutb"]
+[ext_resource type="Texture2D" uid="uid://6ajrur48td2p" path="res://Menus/Enter_video/0007.jpg" id="7_cgaw5"]
+[ext_resource type="Texture2D" uid="uid://c5elih1w44ocv" path="res://Menus/Enter_video/0008.jpg" id="8_ejsoa"]
+[ext_resource type="Texture2D" uid="uid://bvmihdgg6lmp8" path="res://Menus/Enter_video/0009.jpg" id="9_8iwlv"]
+[ext_resource type="Texture2D" uid="uid://uq4jnoycwda5" path="res://Menus/Enter_video/0010.jpg" id="10_n6hwc"]
+[ext_resource type="Texture2D" uid="uid://b08cedrxic3e" path="res://Menus/Enter_video/0011.jpg" id="11_3v53p"]
+[ext_resource type="Texture2D" uid="uid://bideli4bp6erv" path="res://Menus/Enter_video/0012.jpg" id="12_p1pus"]
+[ext_resource type="Texture2D" uid="uid://8rxhs6gsxk85" path="res://Menus/Enter_video/0013.jpg" id="13_meml0"]
+[ext_resource type="Texture2D" uid="uid://bfy4e6t1kd515" path="res://Menus/Enter_video/0014.jpg" id="14_hncwj"]
+[ext_resource type="Texture2D" uid="uid://chbliv5y06fg6" path="res://Menus/Enter_video/0015.jpg" id="15_pd3lo"]
+[ext_resource type="Texture2D" uid="uid://bq040m5a67tqd" path="res://Menus/Enter_video/0016.jpg" id="16_ju1jn"]
+[ext_resource type="FontFile" uid="uid://c05igqgks2yox" path="res://Menus/Fonts/Kenney Mini Square.ttf" id="18_s7j1f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l831y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vidna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p7tyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uk2p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hxlor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f7j7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_evutb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cgaw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ejsoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8iwlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n6hwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3v53p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p1pus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_meml0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hncwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pd3lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ju1jn")
+}],
+"loop": true,
+"name": &"Enter",
+"speed": 24.0
+}]
+
+[node name="Enter_Menu" type="CanvasLayer"]
+script = ExtResource("1_282se")
+
+[node name="Video" type="AnimatedSprite2D" parent="."]
+position = Vector2(656, 360)
+scale = Vector2(1.15556, 1.15556)
+sprite_frames = SubResource("SpriteFrames_l831y")
+animation = &"Enter"
+frame_progress = 0.295315
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Pressed" type="RichTextLabel" parent="Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -48.0
+offset_right = 200.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("18_s7j1f")
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = " [tornado radius=2
+.0 freq=10 connected=1]Press[pulse freq=1.0 color=#FF0000 ease=-2.0] [font_size={60}]E[/font_size][/pulse] to PLay "
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Pressed2" type="RichTextLabel" parent="Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -616.0
+offset_top = -160.0
+offset_right = 624.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("18_s7j1f")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=red][font_size={40}]credits[/font_size][/color]
+[color=yellow]Visual:[/color] Edward Ureña [Hola]
+[color=yellow]Programming:[/color] Hero Sensei/Edward Ureña [Hola]
+[color=yellow]music:[/color] Tiaco [Pato]"
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
