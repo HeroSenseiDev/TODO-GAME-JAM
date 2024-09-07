@@ -45,7 +45,7 @@ var Run_:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	GlobalVar.Juegos_Terminado["Oxigeno"] = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

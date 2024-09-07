@@ -3,9 +3,11 @@ class_name Player
 
 @export var speed : float = 15.0
 var knockback_direction
+@onready var battery_component: BatteryComponent = $BatteryComponent
+
 @onready var carrying_offset: Node3D = $CarryingOffset
 var can_take : bool
-
+var carrying_object : Node3D
 #Enter Mini Juego
 var Enter_Mini_Juego:bool
 var is_in_area : bool

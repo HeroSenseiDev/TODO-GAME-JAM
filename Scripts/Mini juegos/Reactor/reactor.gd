@@ -38,6 +38,7 @@ var Run_:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVar.Juegos_Terminado["Reactor"] = false
 	randomize()
 	set_position.start(1)
 	how_position = Vector2(how_Position_x_min, Ramdon.randf_range(69, 664))
