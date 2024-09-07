@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=61 format=4 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -1278,6 +1278,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 0
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 0.999999, 1)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vd8xp"]
 resource_name = "Choque"
@@ -2249,6 +2261,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 0
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array()
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_88yd4"]
 tracks/0/type = "position_3d"
@@ -3217,6 +3241,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hriab"]
 resource_name = "Run"
@@ -4189,6 +4225,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.233333, 1, 1, 1, 1.00001, 0.266667, 1, 1.0015, 0.999999, 0.998786, 0.3, 1, 1.00331, 1, 0.997351, 0.333333, 1, 1.00297, 0.999999, 0.997498, 0.366667, 1, 0.999498, 0.999999, 1.00078, 0.625, 1, 1.00002, 1, 0.999983)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2r61p"]
 resource_name = "Run_2"
@@ -5161,6 +5209,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.0333333, 1, 1.00288, 0.999999, 0.99779, 0.0666667, 1, 1.00187, 0.999999, 0.998596, 0.1, 1, 1.00038, 0.999999, 0.999764, 0.166667, 1, 0.999378, 1, 1.00078, 0.333333, 1, 0.999705, 0.999999, 1.0003, 0.366667, 1, 1.00274, 1, 0.997907, 0.4, 1, 1.00181, 1, 0.998636, 0.433333, 1, 1.00036, 1, 0.999774, 0.5, 1, 0.999384, 1, 1.00078, 0.666667, 1, 0.999702, 0.999999, 1.0003)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rr5mo"]
 resource_name = "Run_take"
@@ -6133,6 +6193,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.0333333, 1, 0.996429, 1, 1.00394, 0.0666667, 1, 0.994667, 1, 1.00601, 0.1, 1, 0.99444, 1, 1.00629, 0.133333, 1, 0.995204, 1, 1.00533, 0.166667, 1, 0.996139, 1, 1.0042, 0.2, 1, 0.997144, 0.999999, 1.00304, 0.233333, 1, 0.999576, 0.999999, 1.0005, 0.3, 1, 1.01173, 1, 0.990546, 0.333333, 1, 1.00892, 0.999999, 0.992451, 0.366667, 1, 0.996593, 1, 1.00449, 0.4, 1, 0.99333, 0.999999, 1.00775, 0.433333, 1, 0.994178, 1, 1.00667, 0.466667, 1, 0.995926, 1, 1.00446, 0.5, 1, 0.997097, 1, 1.00309, 0.533333, 1, 0.998398, 1, 1.00167, 0.566667, 1, 1.00247, 0.999999, 0.997823, 0.6, 1, 1.00707, 0.999999, 0.993911, 0.625, 1, 1.01023, 0.999999, 0.991531)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yia3i"]
 resource_name = "Statico"
@@ -7105,6 +7177,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1.00007, 1, 0.999933)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q1750"]
 resource_name = "Statico_RUn_2"
@@ -8076,6 +8160,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 0
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1yynt"]
 resource_name = "Statico_Run"
@@ -9047,6 +9143,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 0
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_6nup6"]
 resource_name = "Statico_Take"
@@ -10019,6 +10127,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.0333333, 1, 1.00046, 1, 0.999541, 0.1, 1, 1.00201, 0.999999, 0.998069, 0.166667, 1, 1.00306, 1, 0.99712, 0.3, 1, 1.00195, 0.999999, 0.998133, 0.333333, 1, 1.00105, 1, 0.998968, 0.366667, 1, 0.999938, 1, 1.00007, 0.4, 1, 0.99892, 1, 1.00111, 0.433333, 1, 0.998077, 1, 1.00201, 0.5, 1, 0.997052, 1, 1.00314, 0.6, 1, 0.997782, 0.999999, 1.00233, 0.633333, 1, 0.998581, 1, 1.00147, 0.666667, 1, 1, 1, 1)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wv7i0"]
 resource_name = "Take"
@@ -10990,6 +11110,18 @@ tracks/137/path = NodePath("Skeleton3D:Def_Brazo_UP_R.002")
 tracks/137/interp = 1
 tracks/137/loop_wrap = true
 tracks/137/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.466667, 1, 1.00072, 1, 0.999293, 0.625, 1, 1.00103, 1, 0.998992)
+tracks/138/type = "value"
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/path = NodePath("GPUParticles3D:emitting")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kce61"]
 _data = {
@@ -11070,7 +11202,7 @@ filters = ["Skeleton3D:Def_Anular_L.001", "Skeleton3D:Def_Anular_L.002", "Skelet
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_obhjo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sfuky"]
-graph_offset = Vector2(-376.211, 297.329)
+graph_offset = Vector2(333.396, 102.564)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_488ge")
 nodes/Animation/position = Vector2(-220, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_eo23h")
@@ -11117,6 +11249,34 @@ nodes/TimeScale/position = Vector2(-260, 200)
 "nodes/TimeScale 2/position" = Vector2(260, 580)
 nodes/output/position = Vector2(1580, 200)
 node_connections = [&"Cargando", 0, &"Take_Items", &"Cargando", 1, &"Animation 6", &"Choque", 0, &"Cargando", &"Choque", 1, &"Speed_Choque", &"Run_2", 0, &"Animation 2", &"Run_2", 1, &"Animation 8", &"Set", 0, &"Take", &"Set", 1, &"Set_Speed", &"Set_Speed", 0, &"TimeScale 2", &"Speed_Choque", 0, &"Animation 9", &"Static_to_Run", 0, &"Animation", &"Static_to_Run", 1, &"TimeScale", &"Static_to_Run_Take", 0, &"Animation 3", &"Static_to_Run_Take", 1, &"Animation 4", &"Take", 0, &"Static_to_Run_Take", &"Take", 1, &"Take_Speed", &"Take_Items", 0, &"Static_to_Run", &"Take_Items", 1, &"Set", &"Take_Speed", 0, &"Animation 5", &"TimeScale", 0, &"Run_2", &"TimeScale 2", 0, &"Animation 7", &"output", 0, &"Choque"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3whsk"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.853159, 0.921227, 3.08037e-06, 1)
+
+[sub_resource type="Curve" id="Curve_86qvh"]
+_data = [Vector2(0, 1), 0.0, 0.0732274, 0, 0, Vector2(1, 0.0581949), -3.09061, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ibpm3"]
+curve = SubResource("Curve_86qvh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r8gg0"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 9.24
+linear_accel_max = 37.5
+radial_accel_min = -6.52
+radial_accel_max = 5.44
+tangential_accel_min = -11.96
+tangential_accel_max = 2.72
+scale_max = 9.15
+scale_curve = SubResource("CurveTexture_ibpm3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8vh27"]
+size = Vector3(0.025, 0.025, 0.025)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0anvw"]
 
@@ -11629,6 +11789,19 @@ parameters/Take_Items/blend_amount = 0.0
 parameters/Take_Speed/scale = 1.0
 parameters/TimeScale/scale = 1.2
 "parameters/TimeScale 2/scale" = -1.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="PlayerGFX/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00129, 0)
+material_override = SubResource("StandardMaterial3D_3whsk")
+emitting = false
+amount = 20
+lifetime = 0.5
+explosiveness = 0.04
+randomness = 0.14
+fixed_fps = 24
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_r8gg0")
+draw_pass_1 = SubResource("BoxMesh_8vh27")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerGFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889706, 0)
