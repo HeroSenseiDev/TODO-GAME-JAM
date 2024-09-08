@@ -11,7 +11,6 @@ var how_set:String = "CHANGE_SCENE"
 
 func call_Enter():
 	animation_player.play("Enter")
-	GlobalVar.reset()
 
 func Enter():
 	if how_set == "CHANGE_SCENE":
