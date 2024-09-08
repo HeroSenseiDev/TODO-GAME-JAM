@@ -17,13 +17,12 @@ func _ready() -> void:
 func take_heal(value: int):
 	set_health(value)
 	
-func take_damage(damage: int, node : Node2D):
-	knockback_vector = get_parent().global_position - node.global_position
+func take_damage(damage: int):
 	var value = abs(damage)
 	set_health(-value)
-func set_health(value : int):
+func set_health(value: int):
 	old_health = current_health
-	current_health += value
+	current_health += value  # Si value es negativo, current_health se reduce
 	current_health = clamp(current_health, 0, max_health)
 	
 	if old_health != current_health:
@@ -34,7 +33,7 @@ func set_health(value : int):
 		return
 	elif current_health >= 0 and current_health < old_health:
 		onDamageTook.emit()
-		print("Recibiendo danio")
+		print("Recibiendo daño")
 		
 func dead():
 	onDead.emit()

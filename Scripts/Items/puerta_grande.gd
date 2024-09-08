@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name Trash_Door
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var Speed_to_Open_or_Close: float = 0.2
 @onready var luz: Sprite3D = $Luz

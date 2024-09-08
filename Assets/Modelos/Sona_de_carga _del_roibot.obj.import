@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3ticitlni26s"
+path="res://.godot/imported/Sona_de_carga _del_roibot.obj-a742f048cdf2797965a97c0892f5bf56.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Sona_de_carga _del_roibot.obj-a742f048cdf2797965a97c0892f5bf56.mesh"]
+
+source_file="res://Assets/Modelos/Sona_de_carga _del_roibot.obj"
+dest_files=["res://.godot/imported/Sona_de_carga _del_roibot.obj-a742f048cdf2797965a97c0892f5bf56.mesh", "res://.godot/imported/Sona_de_carga _del_roibot.obj-a742f048cdf2797965a97c0892f5bf56.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

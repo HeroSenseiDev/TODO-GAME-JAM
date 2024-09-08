@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://4w182mkeoav1"]
+[gd_scene load_steps=66 format=4 uid="uid://4w182mkeoav1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_3ccag"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine/state_machine.gd" id="2_i4s6t"]
@@ -11289,6 +11289,33 @@ height = 2.17213
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvwyy"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upqob"]
+metallic_specular = 0.0
+
+[sub_resource type="Curve" id="Curve_44fw7"]
+_data = [Vector2(0, 1), 0.0, 0.0457671, 0, 0, Vector2(0.587349, 0.521378), -1.52391, -1.52391, 0, 0, Vector2(1, 0), -0.067072, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6t4cv"]
+curve = SubResource("Curve_44fw7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gsh12"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 0.999998
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_min = 0.2
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_6t4cv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_yktdl"]
+radial_segments = 12
+rings = 6
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("state_machine") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_3ccag")
@@ -11838,8 +11865,23 @@ max_health = 100
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="BatteryComponent"]
 shape = SubResource("SphereShape3D_lvwyy")
 
+[node name="BatteryTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="Apagar_Fuego" type="GPUParticles3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.334622, 0.642328)
+material_override = SubResource("StandardMaterial3D_upqob")
+emitting = false
+amount = 50
+lifetime = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_gsh12")
+draw_pass_1 = SubResource("SphereMesh_yktdl")
+
 [connection signal="timeout" from="StateMachine/PlayerShockState/Timer" to="StateMachine/PlayerShockState" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PlayerShockState/KnockbackDuration" to="StateMachine/PlayerShockState" method="_on_knockback_duration_timeout"]
 [connection signal="animation_finished" from="PlayerGFX/Player/AnimationTree" to="PlayerGFX" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="TripDetection" to="StateMachine/PlayerGroundState" method="_on_trip_detection_body_entered"]
 [connection signal="body_exited" from="TripDetection" to="StateMachine/PlayerGroundState" method="_on_trip_detection_body_exited"]
+[connection signal="timeout" from="BatteryTimer" to="." method="_on_battery_timer_timeout"]

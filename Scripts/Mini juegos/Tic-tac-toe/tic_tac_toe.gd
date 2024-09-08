@@ -136,7 +136,7 @@ var turnos = 0
 var turnos_max = 3
 
 var Empate = false
-var Run_Game:bool 
+var Run_Game:bool
 var In_Game:bool
 var Win_Dead:String
 var Run_:bool 
@@ -156,7 +156,7 @@ func _process(delta: float) -> void:
 		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
 			In_Game = true
 		Run(delta)
-
+	if Win_Dead == "WIN": GlobalVar.Juegos_Terminado["Basura"] = true
 	Kill_or_Win("Win")
 	Kill_or_Win("Dead")
 
@@ -277,7 +277,8 @@ func set_Lineas(how_casillas:Array, how_linea:String, object_tipe:String):
 	
 func Kill_or_Win(how:String):
 
-	
+
+
 	# Mira que Linea Va a dibujar
 	var type = "Circulo" if how == "Win" else "Rombo"
 
@@ -285,43 +286,52 @@ func Kill_or_Win(how:String):
 	if set_Lineas(["Casilla_1", "Casilla_2", "Casilla_3"], "Vertical_UP", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_4", "Casilla_5", "Casilla_6"], "Vertical_MED", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_7", "Casilla_8", "Casilla_9"], "Vertical_DOWN", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_1", "Casilla_4", "Casilla_7"], "Horizontal_LEFT", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
-		
+		return
+
 	if set_Lineas(["Casilla_2", "Casilla_5", "Casilla_8"], "Horizontal_MED", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_3", "Casilla_6", "Casilla_9"], "Horizontal_RIGHT", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_1", "Casilla_5", "Casilla_9"], "Diagonal_LEFT", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	if set_Lineas(["Casilla_3", "Casilla_5", "Casilla_7"], "Diagonal_RIGHT", type):
 		Win_Dead = "WIN" if how == "Win" else "DEAD"
 		In_Game = false
+		return
 		
 	for casilla in Cuadrillas.keys():
-		if not Cuadrillas[casilla]["How"] != "":
+		if not Cuadrillas[casilla]["How"] != "" or Win_Dead == "WIN":
 			return
 
 	if Empate == false:
 		Win_Dead = "DEAD"
 		In_Game = false
 
+	
 	
 
 func _on_ia_game_timeout() -> void:

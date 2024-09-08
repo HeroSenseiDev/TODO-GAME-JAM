@@ -1,15 +1,14 @@
 extends TextureProgressBar
-class_name HealthPlayerBar
-@export var battery_component : BatteryComponent
+class_name BatteryBar
 
-func on_ready():
-	max_value = battery_component.max_health
-	value = battery_component.current_health
-	
-	battery_component.onHealthChanged.connect(update_health)
-	
+@export var player: Player
 
-func update_health(current_health):
-	value = current_health
-	if value <= 0:
-		hide()
+func _ready():
+	if not player:
+		player = get_tree().get_first_node_in_group("Player")
+		max_value = player.battery_timer.wait_time * 1000
+		value = max_value  # Iniciar con el valor máximo
+func _process(delta):
+	# Calcular el valor actual basado en el tiempo transcurrido
+	var time_passed = player.battery_timer.wait_time * 1000 - player.battery_timer.time_left * 1000
+	value = max_value - time_passed

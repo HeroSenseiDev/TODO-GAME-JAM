@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfsnpdysw01pw"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCharger.gd" id="1_77q6c"]
+[ext_resource type="Material" uid="uid://bn0nke0jqndni" path="res://Assets/Materiales/Base.tres" id="2_necn6"]
+[ext_resource type="Texture2D" uid="uid://ls5k6h85fd0y" path="res://Resources/2D/Candado.png" id="2_wdwye"]
+[ext_resource type="ArrayMesh" uid="uid://d3ticitlni26s" path="res://Assets/Modelos/Sona_de_carga _del_roibot.obj" id="3_ofc5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uodpe"]
+size = Vector3(1.72449, 0.172304, 1.46655)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6itb"]
+size = Vector3(1, 3.19995, 1)
+
+[node name="PlayerCharger" type="StaticBody3D"]
+script = ExtResource("1_77q6c")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_necn6")
+mesh = ExtResource("3_ofc5p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00677635, 0.0372326, 0.0404053)
+shape = SubResource("BoxShape3D_uodpe")
+
+[node name="PlayerDetection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36257, 0)
+shape = SubResource("BoxShape3D_h6itb")
+
+[node name="Candado" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.40993, 1.86215, 1.30097)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_wdwye")
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

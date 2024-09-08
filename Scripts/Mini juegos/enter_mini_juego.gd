@@ -11,7 +11,7 @@ var Mini_Juego_node
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var take_mini_juego: Node3D = $ConedorSpriter/Scale_Sprite
 @onready var take_mini_juego_2: Sprite3D = $ConedorSpriter/Scale_Sprite/Take_Mini_Juego2
-
+@export var is_ship_game : bool
 @onready var reload: Timer = $Reload
 @export var reload_time = 10
 var time_out:bool = true
@@ -54,7 +54,17 @@ func Enter_Mini_Juego():
 	var game_exemption = GlobalVar.Tarea_Terminada.has(type) and GlobalVar.Tarea_Terminada[type]
 	var game_type = GlobalVar.Juegos_Terminado.has(game) and GlobalVar.Juegos_Terminado[game]
 	
-	if Player_Enter and not Mini_Juego_node.In_Game and time_out and not player.is_carrying :
+	if is_ship_game and Player_Enter and not  Mini_Juego_node.In_Game and time_out and !player.is_carrying:
+		if not time_out:
+			if GlobalVar.all_tasks_completed():
+				player.can_set = true
+				if time_out == true and Input.is_action_just_pressed("Take") and not player.is_carrying:
+					Mini_Juego_node.Run_Game = true
+					player.state_machine.change_to("PlayerGameState")
+					animation_player.play("enter")
+					Edit_Camara(true)
+					time_out = false
+	if Player_Enter and not Mini_Juego_node.In_Game and time_out and not player.is_carrying and !is_ship_game:
 		if not time_out:
 			player.can_set = false
 		if exeption and not game_exemption:
@@ -72,6 +82,7 @@ func Enter_Mini_Juego():
 			
 	# Verifica si el minijuego ha terminado
 	if Mini_Juego_node.Win_Dead == "WIN" or Mini_Juego_node.Win_Dead == "DEAD":
+		print(GlobalVar.Juegos_Terminado)
 		if Mini_Juego_node.In_Game == false:
 			animation_player.play("close")
 			player.can_set = false

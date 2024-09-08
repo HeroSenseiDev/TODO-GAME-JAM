@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 				object_detection.my_object.reparent(self)
 				object_detection.my_object.global_position = global_position
 				GlobalVar.BasuraEnSala[object_detection.my_object.name] = true
-				print(GlobalVar.BasuraEnSala)
 				player.is_carrying = false
 				myObject.in_place = true
 func trash_is_here():
