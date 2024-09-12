@@ -1,14 +1,16 @@
 extends Node
-
+var estoy_en_la_nave : bool = false
 var Juegos_Terminado = {
 	"Oxigeno": false,
 	"Reactor": false,
-	"Basura": false
+	"Basura": false,
+	"Nave": false,
 }
 
 var Tarea_Terminada = {
 	"BateriaCargada": false,
 	"BasuraRecogida": false,
+	"TodoListo": false,
 }
 
 var BasuraEnSala = {
@@ -24,13 +26,14 @@ var BasuraEnSala = {
 }
 
 func _ready():
-	# Aquí podrías inicializar cualquier configuración adicional si es necesario
 	pass
 
 func _process(delta):
 	# Verifica si todas las variables en BasuraEnSala son true
 	if todas_las_basuras_recogidas():
 		Tarea_Terminada["BasuraRecogida"] = true
+	if all_tasks_completed():
+		Tarea_Terminada["TodoListo"] = true
 
 func todas_las_basuras_recogidas() -> bool:
 	for value in BasuraEnSala.values():
@@ -39,7 +42,7 @@ func todas_las_basuras_recogidas() -> bool:
 	return true
 
 func Relad_Game():
-	reset()
+	#reset()
 	get_tree().reload_current_scene()
 	# Por ahora, así, si hay tiempo, se puede hacer una animación
 
@@ -50,10 +53,10 @@ func reset():
 		Juegos_Terminado[key] = false
 	for key in Tarea_Terminada.keys():
 		Tarea_Terminada[key] = false
+	estoy_en_la_nave = false
 
 func all_tasks_completed() -> bool:
-	# Usa un bucle para verificar si todos los valores en Juegos_Terminado son true
-	for value in Juegos_Terminado.values():
-		if not value:
+	for key in Juegos_Terminado.keys():
+		if key != "Nave" and not Juegos_Terminado[key]:
 			return false
 	return true

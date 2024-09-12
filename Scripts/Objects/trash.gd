@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 				player.is_carrying = true
 				global_position = player.carrying_offset.global_position + offset
 				global_rotation = player.carrying_offset.global_rotation
+				player.basura_tomar.play()
 				player.carrying_object = self
 				player.can_take = false
 		

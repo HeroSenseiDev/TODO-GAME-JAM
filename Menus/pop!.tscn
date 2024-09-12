@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfglvdl8q615g"]
+
+[ext_resource type="FontFile" uid="uid://c05igqgks2yox" path="res://Menus/Fonts/Kenney Mini Square.ttf" id="1_r45jq"]
+
+[sub_resource type="Gradient" id="Gradient_h1f4v"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.964824)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wd3xg"]
+gradient = SubResource("Gradient_h1f4v")
+width = 23
+height = 28
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="POP!" type="SubViewport"]
+size = Vector2i(640, 288)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 200.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 272.0
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="Pressed" type="RichTextLabel" parent="Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 32.0
+offset_right = 368.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_r45jq")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[tornado radius=1.0 freq=1.0 connected=1]1. [color=green]if[/color] disatye == [color=yellow]\"Error\"[/color]:
+2.		[color=blue]set_ship_control[/color]([color=red]false[/color]):
+3.[color=green]if[/color] battery <= [color=green]0[/color]:
+4.  	Actions_to_robot =  [color=green]0[/color] [pulse freq=5.0 color=#ffffff40 ease=-2.0]| "
+scroll_active = false
+autowrap_mode = 0
+tab_size = 5
+shortcut_keys_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.302)
+texture_filter = 3
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 623.0
+offset_bottom = 272.0
+texture = SubResource("GradientTexture2D_wd3xg")
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 24.0
+offset_right = 608.0
+offset_bottom = 104.0
+color = Color(1, 1, 1, 0.222)
+
+[node name="ColorRect4" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 120.0
+offset_right = 608.0
+offset_bottom = 256.0
+color = Color(1, 1, 1, 0.222)

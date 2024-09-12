@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	if can_accept and Input.is_action_just_pressed("Take"):
 		if carrying_detection.my_object != null:
 			carrying_detection.my_object.queue_free()
+			player.bateria_soltar.play()
 			player.is_carrying = false
 			alert.visible = false
 			GlobalVar.Tarea_Terminada["BateriaCargada"] = true
@@ -21,4 +22,5 @@ func _process(delta: float) -> void:
 
 func battery_is_here():
 	if carrying_detection.my_object.is_charged == true:
+		player.can_set = true
 		can_accept = true

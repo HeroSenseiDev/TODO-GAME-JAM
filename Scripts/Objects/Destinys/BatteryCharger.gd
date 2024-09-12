@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 				object_detection.my_object.reparent(posicion_bateria_cargada)
 				object_detection.my_object.global_position = posicion_bateria_cargada.global_position
 				object_detection.my_object.global_rotation = posicion_bateria_cargada.global_rotation
+				player.bateria_soltar.play()
 				player.is_carrying = false
 				GameManager.battery_is_charging = true
 				$Sprite3D.visible = true

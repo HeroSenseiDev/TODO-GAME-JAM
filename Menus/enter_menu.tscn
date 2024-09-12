@@ -136,3 +136,10 @@ text = "[color=red][font_size={40}]credits[/font_size][/color]
 [color=yellow]music:[/color] Tiaco [Pato]"
 autowrap_mode = 0
 shortcut_keys_enabled = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 1309.0
+offset_bottom = 736.0
+color = Color(0, 0, 0, 1)

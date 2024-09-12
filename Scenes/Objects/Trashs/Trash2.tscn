@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://fpqm8nhc1kjq"]
+[gd_scene load_steps=13 format=4 uid="uid://fpqm8nhc1kjq"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/trash.gd" id="1_arm6m"]
 [ext_resource type="Script" path="res://Scripts/Carrying.gd" id="2_c353u"]
@@ -45,6 +45,28 @@ shadow_mesh = SubResource("ArrayMesh_172wk")
 [sub_resource type="SphereShape3D" id="SphereShape3D_ypm6l"]
 radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poj0q"]
+albedo_color = Color(0.588548, 0.679627, 0.324101, 1)
+
+[sub_resource type="Curve" id="Curve_fk34x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.60477, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a3c8x"]
+curve = SubResource("Curve_fk34x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bpghj"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 10, 0)
+scale_min = 0.2
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_a3c8x")
+
+[sub_resource type="SphereMesh" id="SphereMesh_h6oir"]
+radial_segments = 16
+rings = 2
+
 [node name="Trash2" type="StaticBody3D"]
 collision_layer = 8
 script = ExtResource("1_arm6m")
@@ -65,3 +87,9 @@ script = ExtResource("2_c353u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_ypm6l")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_poj0q")
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_bpghj")
+draw_pass_1 = SubResource("SphereMesh_h6oir")

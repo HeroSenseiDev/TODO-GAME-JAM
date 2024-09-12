@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd2igfxw03rij"]
+[gd_scene load_steps=13 format=3 uid="uid://bd2igfxw03rij"]
 
 [ext_resource type="Script" path="res://Scripts/fuego.gd" id="1_idslq"]
+[ext_resource type="AudioStream" uid="uid://daghy72h8pbi5" path="res://SFX/Ambientes/Ambiente_Cabina_Basurero.ogg" id="2_dl63j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsgvd"]
 disable_ambient_light = true
@@ -130,6 +131,10 @@ shape = SubResource("SphereShape3D_v8bm5")
 [node name="Cambiar_Fuego" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="FuegoAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dl63j")
+volume_db = -20.0
 
 [connection signal="area_entered" from="Fuego/Apagar" to="." method="_on_apagar_area_entered"]
 [connection signal="area_exited" from="Fuego/Apagar" to="." method="_on_apagar_area_exited"]

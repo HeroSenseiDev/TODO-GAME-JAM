@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 				GlobalVar.BasuraEnSala[object_detection.my_object.name] = true
 				player.is_carrying = false
 				myObject.in_place = true
+				player.basura_soltar.play()
 func trash_is_here():
 	player.can_set = true
 	

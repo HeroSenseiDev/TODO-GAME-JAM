@@ -156,7 +156,7 @@ func _process(delta: float) -> void:
 		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
 			In_Game = true
 		Run(delta)
-	if Win_Dead == "WIN": GlobalVar.Juegos_Terminado["Basura"] = true
+	#if Win_Dead == "WIN": GlobalVar.Juegos_Terminado["Basura"] = true
 	Kill_or_Win("Win")
 	Kill_or_Win("Dead")
 

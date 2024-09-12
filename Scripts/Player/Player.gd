@@ -18,6 +18,17 @@ var can_set : bool
 @onready var battery_timer: Timer = $BatteryTimer
 @onready var apagar_fuego: GPUParticles3D = $Apagar_Fuego
 var need_hold : bool = false
+@onready var apagar: AudioStreamPlayer = $SFX/Apagar
+@onready var basura_tomar: AudioStreamPlayer = $SFX/BasuraTomar
+@onready var basura_soltar: AudioStreamPlayer = $SFX/BasuraSoltar
+@onready var bateria_tomar: AudioStreamPlayer = $SFX/BateriaTomar
+@onready var bateria_soltar: AudioStreamPlayer = $SFX/BateriaSoltar
+@onready var positivo: AudioStreamPlayer = $SFX/Positivo
+@onready var puerta_cerrar: AudioStreamPlayer = $SFX/PuertaCerrar
+@onready var puerta_abrir: AudioStreamPlayer = $SFX/PuertaAbrir
+
+
+
 func _ready() -> void:
 	battery_timer.start()
 	GameManager.player = self
@@ -48,4 +59,9 @@ func fire_particles(on : bool):
 
 
 func _on_battery_timer_timeout() -> void:
-	Transicion.call_Enter()
+	if not GlobalVar.estoy_en_la_nave:
+		Transicion.call_Enter()
+
+
+func _on_positivo_finished() -> void:
+	pass # Replace with function body.

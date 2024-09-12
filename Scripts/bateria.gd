@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 				set_collision_layer_value(1, false)
 				global_position = player.carrying_offset.global_position
 				global_rotation = player.carrying_offset.global_rotation
+				player.bateria_tomar.play()
 		
 func player_is_in_area():
 		player.is_in_area = true

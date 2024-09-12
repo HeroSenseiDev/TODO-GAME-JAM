@@ -39,7 +39,7 @@ var Run_:bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	GlobalVar.Juegos_Terminado["Reactor"] = false
+	#GlobalVar.Juegos_Terminado["Reactor"] = false
 	randomize()
 	set_position.start(1)
 	how_position = Vector2(how_Position_x_min, Ramdon.randf_range(69, 664))
@@ -121,7 +121,7 @@ func Kill_or_Win():
 		
 		Win_Dead = "WIN"
 		In_Game = false
-		GlobalVar.Juegos_Terminado["Reactor"] = true
+		#GlobalVar.Juegos_Terminado["Reactor"] = true
 		player.can_set = false
 
 func _on_set_position_timeout() -> void:

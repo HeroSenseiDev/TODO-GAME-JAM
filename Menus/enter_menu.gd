@@ -4,11 +4,13 @@ extends Node2D
 @onready var pressed: RichTextLabel = $Control/Pressed
 var target_position = Vector2()
 const NAVE = "res://Scenes/G_Items/nave.tscn"
+@onready var color_rect: ColorRect = $ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	video.play("Enter")
 	target_position = video.position
+	create_tween().tween_property(color_rect, "modulate", Color(0, 0, 0, 0), 1)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Take"):
 		Transicion.Enter_Scena = "res://Scenes/G_Items/nave.tscn"
-		
+		Transicion.how_set = "CHANGE_SCENE"
 		Transicion.call_Enter()
 		
 func _move_video_to_mouse():

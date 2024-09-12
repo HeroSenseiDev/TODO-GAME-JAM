@@ -34,6 +34,9 @@ func Set_Win(delta):
 	if Real_Time >= Limit_Time:
 		In_Game = false
 		Win_Dead = "WIN"
+		Transicion.Enter_Scena = "res://Win/win.tscn"
+		Transicion.how_set = "CHANGE_SCENE"
+		Transicion.call_Enter()
 		GlobalVar.Juegos_Terminado["Nave"] = true
 		# Restablecer Real_Time al ganar
 		Real_Time = 0 
@@ -43,6 +46,7 @@ func _process(delta: float) -> void:
 	if Run_Game:
 		if not In_Game and Win_Dead != "WIN" and Win_Dead != "DEAD":
 			In_Game = true
+			GlobalVar.estoy_en_la_nave = true
 		Run(delta)
 
 func Run(delta):
@@ -57,9 +61,9 @@ func Run(delta):
 	if nave_player.Nave_Player_Dead:
 		In_Game = false
 		Win_Dead = "DEAD"
-		GlobalVar.Relad_Game()
 		# Restablecer Real_Time al perder
 		Real_Time = 0 
+		Transicion.call_Enter()
 
 func Inputs_Meteoritos():
 	var current_time = Time.get_ticks_usec() / 1000

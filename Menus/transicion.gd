@@ -11,10 +11,9 @@ var how_set:String = "CHANGE_SCENE"
 
 func call_Enter():
 	animation_player.play("Enter")
-
+	GlobalVar.reset()
 func Enter():
 	if how_set == "CHANGE_SCENE":
 		get_tree().change_scene_to_file(Enter_Scena)
 	else:
-		GlobalVar.reset()
 		get_tree().reload_current_scene()

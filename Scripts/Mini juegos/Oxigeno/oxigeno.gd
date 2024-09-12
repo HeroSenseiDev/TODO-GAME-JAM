@@ -53,6 +53,8 @@ func _process(delta: float) -> void:
 		if not In_Game and Win_Dead != "WIN" or Win_Dead != "DEAD":
 			In_Game = true
 		Run(delta)
+	#if Win_Dead == "WIN":
+		#GlobalVar.Juegos_Terminado["Oxigeno"] = true
 		
 	Kill_or_Win()
 	
@@ -188,7 +190,6 @@ func Kill_or_Win():
 	and Marcas["Marca_3"]["Active"]):
 		Win_Dead = "WIN"
 		In_Game = false
-		GlobalVar.Juegos_Terminado["Oxigeno"] = true
 	
 
 func _on_timer_timeout() -> void:

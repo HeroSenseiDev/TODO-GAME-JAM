@@ -25,7 +25,7 @@ var Apagado = 0
 var Ramdon = RandomNumberGenerator.new()
 var Fuego_Activo: bool
 var Player_enter: bool
-
+var sonando : bool
 var Take_ultime_position = Vector3()
 
 func _ready() -> void:
@@ -55,6 +55,10 @@ func Apagado_de_fuego(delta):
 func Off_On_Fuego(emitting: bool):
 	for particula in Particulas:
 		particula.emitting = emitting
+		if emitting:
+			$FuegoAudio.play()
+		if emitting == false:
+			$FuegoAudio.stop()
 
 func Cambiar_el_Fuego():
 	for attempt in range(10):  # Limitar el número de intentos para evitar recursión infinita

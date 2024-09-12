@@ -6,7 +6,7 @@ class_name GUI
 @onready var interact_label: MarginContainer = $E2Interact
 @onready var label_time: RichTextLabel = $MarginContainer2/HBoxContainer/Label_Time
 @onready var sub_label_time: RichTextLabel = $MarginContainer2/HBoxContainer/subLabel_Time
-@onready var hold: MarginContainer = $Hold
+@onready var hold: Control = $Hold
 
 
 @onready var alerta_fuego: AnimationPlayer = $Alerta_Fuego/Alerta_Fuego
@@ -14,7 +14,7 @@ class_name GUI
 
 var Alert_fuego:bool
 var Time_to_dead_for_fire:float = 20
-var Time_to_dead:float = 90
+var Time_to_dead:float = 200
 var Time_to_Control : float = 7   
 
 
@@ -36,16 +36,25 @@ func Timer_Dead(delta):
 		how_color = "[color=red]"
 	elif Time_to_dead < 60:
 		how_color = "[color=yellow]"
-
+	
 	sub_label_time.text =  how_color + "[shake rate=20.0 level=5 connected=1]For meteorites[/shake]"
 	
+	if Time_to_dead <= 0:
+		Transicion.how_set = ""
+		Transicion.call_Enter()
+		
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	Timer_Dead(delta)
 	Timer_Fire(delta)
 	if Input.is_action_just_pressed("Esc"):
-		Transicion.Enter_Scena = "res://Menus/enter_menu.tscn"
+		Transicion.how_set = ""
 		Transicion.call_Enter()
+		Transicion.Enter_Scena = "res://Menus/enter_menu.tscn"
+		Transicion.how_set = "CHANGE_SCENE"
+		Transicion.call_Enter()
+		
 
 func Timer_Fire(delta):
 	if Alert_fuego == true:
@@ -60,6 +69,7 @@ func Timer_Fire(delta):
 		if Time_to_dead_for_fire <= 5:
 			level = 15
 		if Time_to_dead_for_fire <= 0:
+			Transicion.how_set = ""
 			Transicion.call_Enter()
 			
 		sub_label_fire.text = str(int(Time_to_dead_for_fire)) + "[shake rate=20.0 level="+str(level)+"connected=1]Time to extinguish the fire![/shake]"

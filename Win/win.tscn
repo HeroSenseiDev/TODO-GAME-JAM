@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://35cpqh47ns4i"]
+
+[ext_resource type="Script" path="res://Win/win.gd" id="1_ufrek"]
+[ext_resource type="FontFile" uid="uid://c05igqgks2yox" path="res://Menus/Fonts/Kenney Mini Square.ttf" id="2_lobjd"]
+
+[sub_resource type="Gradient" id="Gradient_t0xby"]
+offsets = PackedFloat32Array(0.568965, 0.635057, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0600001, 0.0600001, 0.0600001, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kahdp"]
+gradient = SubResource("Gradient_t0xby")
+width = 24
+height = 24
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_ufrek")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 3
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = SubResource("GradientTexture2D_kahdp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="subLabel_Time" type="RichTextLabel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_lobjd")
+theme_override_font_sizes/normal_font_size = 132
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=5.0 connected=1]   YOU Win   "
+fit_content = true
+autowrap_mode = 0
+shortcut_keys_enabled = false

@@ -4,6 +4,10 @@ extends Node3D
 @onready var puerta_r: Marker3D = $Puerta_R
 var is_in_area : bool
 @export var Speed_To_Open:float = 0.2
+@onready var puerta_abrir: AudioStreamPlayer = $PuertaAbrir
+@onready var puerta_cerrar: AudioStreamPlayer = $PuertaCerrar
+
+
 func _process(delta: float) -> void:
 	if is_in_area:
 		Open()
@@ -21,8 +25,10 @@ func Close():
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.get_parent() is Player:
+		puerta_abrir.play()
 		Open()
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
+	puerta_cerrar.play()
 	Close()
